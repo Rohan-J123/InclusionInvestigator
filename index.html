@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Page</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script src = "./scripts/indexJS/firebase.js"></script>
+
+    <script>
+        function totalTime(arr){
+            
+            let secondsTaken = [];
+            let minutesTaken = [];
+            let hoursTaken = [];
+            for (let i = 0; i < arr.length; i++) {
+                let splitArray = arr[i].split(" ");
+                let timeParts = splitArray[splitArray.length - 1].split(":");
+                secondsTaken.push(parseInt(timeParts[2]));
+                minutesTaken.push(parseInt(timeParts[1]));
+                hoursTaken.push(parseInt(timeParts[0]));
+            }
+            let playerFinalSeconds = secondsTaken.reduce((acc, curr) => acc + curr, 0);
+            let playerFinalMinutes = minutesTaken.reduce((acc, curr) => acc + curr, 0);
+            let playerFinalHours = hoursTaken.reduce((acc, curr) => acc + curr, 0);
+            
+            playerFinalMinutes += Math.floor(playerFinalSeconds / 60);
+            playerFinalSeconds = playerFinalSeconds % 60;
+
+            playerFinalHours += Math.floor(playerFinalMinutes / 60);
+            playerFinalMinutes = playerFinalMinutes % 60;
+
+            playerFinalHours = (playerFinalHours).toString();
+            playerFinalMinutes = (playerFinalMinutes).toString();
+            playerFinalSeconds = (playerFinalSeconds).toString();
+
+            while(playerFinalHours.length < 2){
+                playerFinalHours = "0" + playerFinalHours;
+            }
+
+            while(playerFinalMinutes.length < 2){
+                playerFinalMinutes = "0" + playerFinalMinutes;
+            }
+
+            while(playerFinalSeconds.length < 2){
+                playerFinalSeconds = "0" + playerFinalSeconds;
+            }
+
+            return [playerFinalHours, playerFinalMinutes, playerFinalSeconds];
+        }
+
+        function redirect() {
+            let playerDatas = [];
+            let cutoffDate = new Date("May 16, 2024");
+
+            db.collection(collectionName).get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        // Check if timestamp exists and is valid
+                        let entryDate;
+                        if (doc.data().timestamp) {
+                            entryDate = new Date(doc.data().timestamp);
+                            if (isNaN(entryDate.getTime())) {
+                                entryDate = undefined; // Invalid date
+                            }
+                        }
+
+                        // Proceed if entryDate exists and is after cutoffDate
+                        if (entryDate && entryDate > cutoffDate && Array.isArray(doc.data().score) && doc.data().score.length > 0) {
+                            const playerScores = doc.data().score;
+                            const playerFinalScore = playerScores.reduce((acc, curr) => acc + curr, 0);
+                            let totalTimeTaken = totalTime(doc.data().timeTaken);
+                            let singlePlayerEntry = [
+                                doc.data().name, 
+                                playerFinalScore, 
+                                totalTimeTaken, 
+                                entryDate, 
+                                doc.data().accessibilityKnowledge, 
+                                doc.data().field
+                            ];
+                            playerDatas.push(singlePlayerEntry);
+                        }
+                    });
+
+                    // Sort based on score, and then time taken if scores are equal
+                    playerDatas.sort((a, b) => {
+                        if (b[1] !== a[1]) {
+                            return b[1] - a[1]; // Sort by score (descending)
+                        } else {
+                            const timeA = a[2].join(':');
+                            const timeB = b[2].join(':');
+                            return timeA.localeCompare(timeB); // Sort by time taken (ascending)
+                        }
+                    });
+
+                    sessionStorage.setItem('allPlayers', JSON.stringify(playerDatas));
+                    sessionStorage.setItem('past-scenarios', JSON.stringify([]));
+                    sessionStorage.setItem('past-only-scenarios', JSON.stringify([]));
+                    sessionStorage.setItem('correct-questions', JSON.stringify([]));
+                    sessionStorage.setItem('correct-input-questions', JSON.stringify([]));
+                    sessionStorage.setItem('question-number', 1);
+                    sessionStorage.setItem('score', 0);
+                    sessionStorage.setItem('timer', '00:00:00');
+                    sessionStorage.setItem('info-dont-show', 'false');
+                    sessionStorage.setItem('start-dont-show', 'false');
+                    sessionStorage.setItem('checkpoint-5', 'false');
+                    sessionStorage.setItem('checkpoint-10', 'false');
+                    sessionStorage.setItem('checkpoint-15', 'false');
+                    sessionStorage.setItem('specialEffectsEnabled', 'true');
+                    sessionStorage.removeItem('user-id');
+                    window.location.href = "./question.html";
+                })
+                .catch((error) => {
+                    console.error("Error getting documents: ", error);
+                });
+        }
+
+        window.onload = redirect;
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
