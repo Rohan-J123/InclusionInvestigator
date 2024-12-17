@@ -30,6 +30,8 @@ function startButtonPressed(){
     document.getElementById("optionAButton").disabled = false;
     document.getElementById("optionBButton").disabled = false;
     document.getElementById("optionCButton").disabled = false;
+    
+    document.getElementById("input-form-submit").disabled = false;
 
     if (document.getElementById("hide-starting-instructions").checked) {
         sessionStorage.setItem('start-dont-show', 'true');
