@@ -70,7 +70,7 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
         })
         .then((data) => {
             fetchedData = data.scenario;
-            console.log(fetchedData);
+            // console.log(fetchedData);
             
             optionScenario = getSubstringBetween(fetchedData, "Scenario: ", "Question");
             optionQuestion = getSubstringBetween(fetchedData, "Question: ", "A)");
@@ -136,7 +136,7 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
         })
         .then((data) => {
             fetchedData = data.scenario;
-            console.log(fetchedData);
+            // console.log(fetchedData);
 
             inputScenario = getSubstringBetween(fetchedData, "Scenario: ", "Question");
             inputQuestion = getSubstringBetween(fetchedData, "Question: ", "Correct Answer");
@@ -266,7 +266,7 @@ function onNextQuestion(correctlyAnswered){
                         throw new Error('Failed to update document');
                     }
             
-                    console.log("Document successfully updated!");
+                    // console.log("Document successfully updated!");
                     document.getElementById('spinner-circle').style.display = 'none';
                     document.getElementById('spinner-overlay').style.display = 'none';
 

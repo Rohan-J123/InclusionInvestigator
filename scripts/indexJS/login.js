@@ -19,7 +19,7 @@ async function createDocument(collectionName) {
         const responseData = await response.json();
         const userId = responseData.documentId;
 
-        console.log('Document created with ID:', userId);
+        // console.log('Document created with ID:', userId);
         return userId;
     } catch (error) {
         console.error('Error creating document:', error);
@@ -79,7 +79,7 @@ document.getElementById("login-info").addEventListener("submit", async function(
         return response.json();
     })
     .then(() => {
-        console.log("Document successfully written with ID: ", userId);
+        // console.log("Document successfully written with ID: ", userId);
         sessionStorage.setItem("user-id", userId);
         sessionStorage.setItem("user-name", name);
         sessionStorage.setItem("user-email", email);
