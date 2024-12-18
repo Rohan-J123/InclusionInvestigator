@@ -8,7 +8,6 @@ function toggleSidebarOn() {
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';
-        sidebar.style.height = 'calc(100vh - 100px)';
     }
 
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
@@ -58,7 +57,6 @@ function setInitialConditions(){
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';
-        sidebar.style.height = 'calc(100vh - 100px)';
     }
 }
 
