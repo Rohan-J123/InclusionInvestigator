@@ -109,7 +109,7 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
 
     stop = true;
 
-    var questionDifficulty = JSON.parse(sessionStorage.getItem('correct-input-questions')).length + 1;
+    var questionDifficulty = (JSON.parse(sessionStorage.getItem('correct-input-questions')).length + 1) * 2;
 
     if(questionDifficulty > 5){
         questionDifficulty = 5;
@@ -157,6 +157,7 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
 }
 
 function onOptionChosen(optionLetter){
+    document.getElementById('code').innerText = document.getElementById('code').innerText + "\n\n" + "A) " + optionAtext + "\nB) " + optionBtext + "\nC) " + optionCtext;
     if(correctAnswer == optionLetter){
         var inner = 
         `<h3 class="lobster-regular" style="text-align: center;">Congratulations!</h3>
@@ -291,6 +292,10 @@ document.getElementById("input-form").addEventListener("submit", function(event)
 
     var userAnswer = document.getElementById('input-form-user-answer').value.trim();
 
+    if(userAnswer == ""){
+        userAnswer = "No Answer";
+    }
+
     const payload = {
         givenScenario: inputScenario,
         userAnswer: userAnswer,
@@ -379,4 +384,12 @@ document.getElementById("input-form").addEventListener("submit", function(event)
         .catch((error) => {
             console.error("Fetch error:", error);
         });
+});
+
+document.getElementById("input-form-user-answer").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+
+        document.getElementById("input-form").dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    }
 });

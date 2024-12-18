@@ -52,9 +52,7 @@
                     <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>SCENARIO:</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;"><span class="material-symbols-outlined" style="font-size: 22.5px;"><b>arrow_back</b></span></button></div>
-                </div><code id="game_code_box" class="html" style="overflow-y: auto; height: 35vh; tab-size: 4; padding-top: 0%; display: flex;" onkeydown="scrollWithArrows(event)" tabindex="0">
-                    <div id="code" style="font-family: 'Times New Roman', Times, serif; flex: 1; padding: 10px; font-size: large; word-wrap: break-word; overflow-wrap: break-word; white-space: normal; text-align: justify;">
-                    </div>
+                </div><code id="code" class="html" style="overflow-y: auto; height: 35vh; tab-size: 4; font-family: 'Times New Roman', Times, serif; padding: 10px 20px 30px 20px; font-size: large; word-wrap: break-word; overflow-wrap: break-word; white-space: normal; text-align: justify;" onkeydown="scrollWithArrows(event)" tabindex="0">
                 </code></pre>
             </div>
             <div id="main-start-area" style="display: block;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
@@ -68,13 +66,13 @@ This game is designed to raise awareness about accessibility challenges and the 
 
 • Each question presents three options to address the accessibility issue.
 • Selecting the correct option earns 5 points, while an incorrect answer yields 0 points.
-• Scenarios, answer options, and detailed explanations are generated using OpenAI.
+• All scenarios, options, and explanations are generated at random using OpenAI.
 
 2.Open-Ended Solutions (Questions 11–15):
 
 • Players must provide a short, written response proposing a solution to the given accessibility issue.
 • Responses are scored on a 1 to 10 scale based on their effectiveness and relevance.
-• Scenarios and scoring of user responses are handled by OpenAI, which evaluates their correctness and quality.
+• All scenarios and scoring of user responses are handled by OpenAI, which evaluates their effectiveness and relevance.
 
 The goal is to achieve the highest score out of hundred in the shortest amount of time!
 (The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG21/" target="_blank">WCAG 2.1</a> or using the button below.)
@@ -182,13 +180,13 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
 
 • Each question presents three options to address the accessibility issue.
 • Selecting the correct option earns 5 points, while an incorrect answer yields 0 points.
-• Scenarios, answer options, and detailed explanations are generated using OpenAI.
+• All scenarios, options, and explanations are generated at random using OpenAI.
 
 2.Open-Ended Solutions (Questions 11–15):
 
 • Players must provide a short, written response proposing a solution to the given issue.
 • Responses are scored on a 1 to 10 scale based on their effectiveness and relevance.
-• Scenarios and scoring of user responses are handled by OpenAI.
+• All scenarios and scoring of user responses are handled by OpenAI.
 
 Achieve the highest score out of hundred in the shortest amount of time!
                         </p>
@@ -400,7 +398,7 @@ Achieve the highest score out of hundred in the shortest amount of time!
                         </div>
                         <div class="carousel-item">
                             <video controls="controls" width="100%" name="Video Name">
-                                <source src="./Images/Info.mov">
+                                <source src="./Images/InclusionInvestigatorDemo.mp4">
                                 Your browser does not support the video tag.
                             </video>
                             <br>
@@ -439,9 +437,9 @@ Achieve the highest score out of hundred in the shortest amount of time!
         </div>
     </div>
 
-    <div id="spinner-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1998; display: none;"></div>
+    <div id="spinner-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.2); z-index: 1998; display: none;"></div>
 
-    <div class="spinner-border text-primary" role="status" id="spinner-circle" style="position: fixed; top: 45%; left: 50%; height: 50px; width: 50px; z-index: 1999; display: none;">
+    <div class="spinner-border text-primary" role="status" id="spinner-circle" style="position: fixed; top: 45%; left: 50%; height: 75px; width: 75px; z-index: 1999; display: none;">
         <span class="visually-hidden">Loading...</span>
     </div>
 
