@@ -2,7 +2,32 @@ if(sessionStorage.getItem("user-id") == null){
     document.getElementById("login-open").click();
 }
 
-document.getElementById("login-info").addEventListener("submit", function(event) {
+async function createDocument(collectionName) {
+    try {
+        const response = await fetch(cloudURL + '/createDocument', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ collectionName }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to create document');
+        }
+
+        const responseData = await response.json();
+        const userId = responseData.documentId;
+
+        console.log('Document created with ID:', userId);
+        return userId;
+    } catch (error) {
+        console.error('Error creating document:', error);
+        throw error;
+    }
+}
+
+document.getElementById("login-info").addEventListener("submit", async function(event) {
     event.preventDefault();
     document.getElementById('spinner-circle').style.display = 'block';
     document.getElementById('spinner-overlay').style.display = "block";
@@ -27,9 +52,10 @@ document.getElementById("login-info").addEventListener("submit", function(event)
         case 'Other': subfield = document.getElementById('subfield-other').value; break;
     }
 
-    var userId = db.collection(collectionName).doc().id;
-    
-    db.collection(collectionName).doc(userId).set({
+    var userId = await createDocument(collectionName);
+
+    const documentData = {
+        id: userId,
         name: name,
         email: email,
         field: field,
@@ -37,8 +63,22 @@ document.getElementById("login-info").addEventListener("submit", function(event)
         area: area,
         subfield: subfield,
         timestamp: String(istTime)
+    };
+    
+    fetch(cloudURL + `/addDocumentData?collectionName=${collectionName}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(documentData)
     })
-    .then(function() {
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(() => {
         console.log("Document successfully written with ID: ", userId);
         sessionStorage.setItem("user-id", userId);
         sessionStorage.setItem("user-name", name);
@@ -47,7 +87,7 @@ document.getElementById("login-info").addEventListener("submit", function(event)
         document.getElementById('spinner-overlay').style.display = "none";
         document.getElementById('First-Modal-Next').click();
     })
-    .catch(function(error) {
+    .catch((error) => {
         console.error("Error writing document: ", error);
     });
 });

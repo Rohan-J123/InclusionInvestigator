@@ -9,10 +9,6 @@
     <script>if (sessionStorage.getItem('question-number') !== null){} else {window.location.replace("./index.html");}</script>
 
 	<script>var exports = {};</script>
-
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     
     <link rel="stylesheet" href="./src/bootstrap/main.css">
     <script src="./scripts/dependencies/bootstrap.bundle.min.js"></script>
@@ -27,7 +23,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <script src="./scripts/indexJS/firebase.js"></script>
+    <script src="./scripts/indexJS/cloud_connect.js"></script>
 
     <script src="./scripts/dependencies/jquery.min.js"></script>
 
@@ -66,16 +62,21 @@
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>ABOUT (Start Button at the end):</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;"><span class="material-symbols-outlined" style="font-size: 22.5px;"><b>arrow_back</b></span></button></div>
                 </div><code id="game_instructions_review" class="html" style="overflow-y: auto; height: 35vh; tab-size: 4; padding-top: 0%; padding-left: 20px; text-wrap: wrap; text-align: justify;" onkeydown="scrollWithArrows(event)" tabindex="0">
-This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). The given program, although syntactically correct, would prove to be an accessiblity issue to some groups. Can you guess which Principles and Criteria, in accordance to WCAG, does this program violate?
+This game is designed to raise awareness about accessibility challenges and the individuals who face them. Players are presented with scenarios that highlight specific accessibility issues, and their objective is to identify solutions to these problems.
 
-1. Guessing the line number of the code block that defies an accessibility criterion correctly earns you 20 points, while an incorrect guess decreases Wi-Fi strength by one bar.
-2. Guessing the Principle the block defies correctly earns you 30 points, while an incorrect guess decreases Wi-Fi strength by one bar.
-3. Identifying the Criterion the block defies successfully will add 50 points to your score and refills Wi-Fi strength by one bar, with no change in Wi-Fi strength for an incorrect guess.
-4. The criterion may be guessed until the correct one is determined, or you may opt to skip the question.
-5. Hints appear as comments in the code, and next hint can be taken only after the previous hint is utilized as answer.
-6. Using the Run button will result in a 100 points deduction from your score, and Run result can be viewed in the sidebar.
+1. Multiple Choice (Questions 1–10):
 
-Find out all accessibility issues in the given code before your Wi-Fi runs out!
+• Each question presents three options to address the accessibility issue.
+• Selecting the correct option earns 5 points, while an incorrect answer yields 0 points.
+• Scenarios, answer options, and detailed explanations are generated using OpenAI.
+
+2.Open-Ended Solutions (Questions 11–15):
+
+• Players must provide a short, written response proposing a solution to the given accessibility issue.
+• Responses are scored on a 1 to 10 scale based on their effectiveness and relevance.
+• Scenarios and scoring of user responses are handled by OpenAI, which evaluates their correctness and quality.
+
+The goal is to achieve the highest score out of hundred in the shortest amount of time!
 (The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG21/" target="_blank">WCAG 2.1</a> or using the button below.)
 
 <input type="checkbox" id="hide-starting-instructions"> <label for="hide-starting-instructions">Don't show these instructions again. </label>
@@ -132,10 +133,10 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                     <button id="open-account" aria-label="account-button" data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
                         <span class="material-symbols-outlined" style="font-size: 21.5px; font-weight: bold;">person</span>
                     </button>
-                    <ul class="dropdown-menu" style="padding: 10px; width: 175px;">
-                        <li style="cursor: default; white-space: nowrap;" id="account-name">Name: </li>
-                        <li style="cursor: default; white-space: nowrap;" id="account-email">Email: </li>
-                        <li style="cursor: default; white-space: nowrap;;" id="account-score">Score: </li>
+                    <ul class="dropdown-menu" style="padding: 10px; width: 300px;">
+                        <li style="cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="account-name">Name: </li>
+                        <li style="cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="account-email">Email: </li>
+                        <li style="cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="account-score">Score: </li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <div class="form-check form-switch">
@@ -176,15 +177,20 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                 <div id="info-container" style="padding-right: 15px; padding-left: 15px; margin-bottom: 10px;">
                     <div id="instructions-block-in-sidebar">
                         <h2 style="margin-top: 0%; text-align: center; margin-bottom: 0%;"><i>Instructions:</i></h2>
-                        <p style="font-size: large; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal; white-space: pre-line;">
-1. Correct Line Number guess: +20 points, incorrect: -1 Wi-Fi bar.
-2. Correct Principle guess: +30 points, incorrect: -1 Wi-Fi bar.
-3. Identifying Criterion: +50 points, refill Wi-Fi bar; incorrect: no change.
-4. Guess Criterion until correct answer is determined or skip.
-5. Hints appear as comments. Next hint can be taken after previous is utilized.
-6. Using Run option will result in 100 point deduction.
+                        <p style="font-size: medium; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal; white-space: pre-line;">
+1. Multiple Choice (Questions 1–10):
 
-Find out all accessibility issues in the given code before your Wi-Fi runs out!
+• Each question presents three options to address the accessibility issue.
+• Selecting the correct option earns 5 points, while an incorrect answer yields 0 points.
+• Scenarios, answer options, and detailed explanations are generated using OpenAI.
+
+2.Open-Ended Solutions (Questions 11–15):
+
+• Players must provide a short, written response proposing a solution to the given issue.
+• Responses are scored on a 1 to 10 scale based on their effectiveness and relevance.
+• Scenarios and scoring of user responses are handled by OpenAI.
+
+Achieve the highest score out of hundred in the shortest amount of time!
                         </p>
                     </div>
                 </div>
@@ -433,29 +439,6 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
         </div>
     </div>
 
-
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UI_tutorials" id="UI_tutorials_button" style="display: none;">
-        Launch UI tutorials modal
-    </button>
-    
-    <div class="modal fade" id="UI_tutorials" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="UI_tutorialsLabel" aria-hidden="true">
-        <div id="UI_tutorials_content" class="modal-dialog modal-sm" style="height: 250px; width: 250px;">
-            <div class="modal-content custom-modal-content tail-bottom">
-                <div class="modal-header" style="height: 60px;">
-                    <h1 class="modal-title fs-5 lobster-regular" id="UI_tutorialsLabel" style="text-align: center; width: 100%;">Modal title</h1>
-                    <button id="UI_tutorials_close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div id="UI_tutorials_modal_body" class="modal-body" style="overflow-y: auto; height: 130px; padding-top: 10px; text-align: justify;">
-                    ...
-                </div>
-                <div class="modal-footer" style="height: 60px;">
-                    <button type="button" id="tutorials_skip_button" class="btn btn-info me-auto" data-bs-dismiss="modal" style="width: 100px;">SKIP</button>
-                    <button type="button" id="tutorials_next_button" class="btn btn-primary" style="width: 100px;" onclick="onTutorialLoad();">NEXT</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div id="spinner-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1998; display: none;"></div>
 
     <div class="spinner-border text-primary" role="status" id="spinner-circle" style="position: fixed; top: 45%; left: 50%; height: 50px; width: 50px; z-index: 1999; display: none;">
@@ -480,6 +463,6 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
     <script src="./scripts/indexJS/miscellaneous.js"></script>
     <script src="./scripts/indexJS/leaderboard.js"></script>
     <script src="./scripts/indexJS/ranks.js"></script>
-    <!-- <script src="./scripts/indexJS/tutorials.js"></script> -->
+    <script src="./scripts/indexJS/tutorials.js"></script>
 </body>
 </html>

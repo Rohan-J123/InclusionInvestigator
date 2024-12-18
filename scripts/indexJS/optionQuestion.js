@@ -186,7 +186,7 @@ function onOptionChosen(optionLetter){
         </div> `;
         document.getElementById('part1Result').innerHTML = inner;
 
-        currentScore = currentScore - 2;
+        currentScore = currentScore + 0;
         onScoreIncrease();
 
         shakeElement(document.getElementById("carouselExampleIndicators"));
@@ -223,40 +223,67 @@ function onNextQuestion(correctlyAnswered){
 
     var score = parseInt(sessionStorage.getItem('score'));
     var timeTaken = document.getElementById('clock-mini').textContent;
+
+    async function updateGameData(userId) {
+        try {
+            const response = await fetch(`${cloudURL}/getDocumentData?collectionName=${collectionName}&id=${userId}`);
     
-    db.collection(collectionName).doc(userId).get().then(function(doc) {
-        if (doc.exists) {
-            var docData = doc.data();
-            var updatedScore = docData.score || [];
-            var updatedTimeTaken = docData.timeTaken || [];
-            var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
+            if (!response.ok) {
+                throw new Error('Failed to fetch document data');
+            }
+    
+            const data = await response.json();
+    
+            if (data.length > 0) {
+                const docData = data[0];
+                var updatedScore = docData.score || [];
+                var updatedTimeTaken = docData.timeTaken || [];
+                var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
 
-            score = score - sumArray(updatedScore);
-            updatedScore.push(score);
-            updatedTimeTaken.push(timeTaken);
-            updatedCorrectlyAnswered.push(correctlyAnswered);
+                score = score - sumArray(updatedScore);
+                updatedScore.push(score);
+                updatedTimeTaken.push(timeTaken);
+                updatedCorrectlyAnswered.push(correctlyAnswered);
 
-            db.collection(collectionName).doc(userId).set({
-                score: updatedScore,
-                timeTaken: updatedTimeTaken,
-                correctlyAnswered: updatedCorrectlyAnswered
-            }, { merge: true })
-            .then(function() {
-                console.log("Document successfully updated!");
-                document.getElementById('spinner-circle').style.display = 'none';
-                document.getElementById('spinner-overlay').style.display = 'none';
+                try {
+                    const data = {
+                        id: userId,
+                        score: updatedScore,
+                        timeTaken: updatedTimeTaken,
+                        correctlyAnswered: updatedCorrectlyAnswered
+                    };
+            
+                    const response = await fetch(`${cloudURL}/addDocumentData?collectionName=${collectionName}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+            
+                    if (!response.ok) {
+                        throw new Error('Failed to update document');
+                    }
+            
+                    console.log("Document successfully updated!");
+                    document.getElementById('spinner-circle').style.display = 'none';
+                    document.getElementById('spinner-overlay').style.display = 'none';
 
-                window.location.href = "./question.html";
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-        } else {
-            console.log("No such document!");
+                    window.location.href = "./question.html";
+                } catch (error) {
+                    console.error('Error updating document:', error);
+                }
+
+            } else {
+                console.log('No document data found');
+            }
+    
+        } catch (error) {
+            console.error('Error fetching document data:', error);
         }
-    }).catch(function(error) {
-        console.error("Error getting document:", error);
-    });
+    }
+
+    updateGameData(userId);
 }
 
 document.getElementById("input-form").addEventListener("submit", function(event) {

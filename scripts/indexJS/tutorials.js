@@ -7,12 +7,7 @@ function onTutorialReset(){
                 {
                     element: document.querySelector('#main-start-area'),
                     title: "Code Box",
-                    intro: "Code will be displayed here once all instructions have been reviewed and the 'Start' button has been pressed."
-                },
-                {
-                    element: document.querySelector('#game-hint-button'),
-                    title: "Hint Button",
-                    intro: "Clicking this button will provide hints as comments within the code, and the corresponding line number will be shown in the input field."
+                    intro: "The scenarios will be displayed here once all instructions have been reviewed and the 'Start' button has been pressed."
                 },
                 {
                     element: document.querySelector('#redirect-to-WCAG'),
@@ -20,19 +15,14 @@ function onTutorialReset(){
                     intro: "This button opens a new tab linking to the official WCAG website."
                 },
                 {
-                    element: document.querySelector('#game-run-code-button'),
-                    title: "Run Button",
-                    intro: "Activate this button to display the code output in the sidebar, at the expense of 100 points."
-                },
-                {
                     element: document.querySelector('#carouselExampleIndicators'),
-                    title: "Questions",
-                    intro: "The line number query, POUR question, and criteria question will be displayed in this section."
+                    title: "User Input",
+                    intro: "The options for the first ten questions and input field for the next five questions will be displayed here."
                 },
                 {
                     element: document.querySelector('#sidebar'),
                     title: "SideBar",
-                    intro: "Instructions for the current question and the output from running the code will be shown here."
+                    intro: "Instructions for the game, question numbers and buttons beneficial to the user will be shown here."
                 },
                 {
                     element: document.querySelector('#open-account'),
@@ -47,12 +37,7 @@ function onTutorialReset(){
                 {
                     element: document.querySelector('#questions-headings-and-labels'),
                     title: "Question Numbers",
-                    intro: "The current question number and remaining criteria to be identified will be displayed here."
-                },
-                {
-                    element: document.querySelector('#wifi-bars-and-label'),
-                    title: "WiFi Bars",
-                    intro: "The remaining WiFi bars are shown here; the game ends when all bars are depleted."
+                    intro: "The current question number and checkposts cleared will be displayed here."
                 },
                 {
                     element: document.querySelector('#tutorial-reset-button'),
@@ -62,7 +47,7 @@ function onTutorialReset(){
                 {
                     element: document.querySelector('#rank-image'),
                     title: "Rank",
-                    intro: "Users will be promoted to a higher rank upon reaching every 1,000-point milestone."
+                    intro: "Users will be promoted to a higher rank upon reaching every 20-point milestone."
                 }
             ]
         });
@@ -90,12 +75,7 @@ function onTutorialReset(){
                 {
                     element: document.querySelector('#main-code-area'),
                     title: "Code Box",
-                    intro: "Code has been displayed here."
-                },
-                {
-                    element: document.querySelector('#game-hint-button'),
-                    title: "Hint Button",
-                    intro: "Clicking this button will provide hints as comments within the code, and the corresponding line number will be shown in the input field."
+                    intro: "The current scenario has been displayed here."
                 },
                 {
                     element: document.querySelector('#redirect-to-WCAG'),
@@ -103,19 +83,14 @@ function onTutorialReset(){
                     intro: "This button opens a new tab linking to the official WCAG website."
                 },
                 {
-                    element: document.querySelector('#game-run-code-button'),
-                    title: "Run Button",
-                    intro: "Activate this button to display the code output in the sidebar, at the expense of 100 points."
-                },
-                {
                     element: document.querySelector('#carouselExampleIndicators'),
-                    title: "Questions",
-                    intro: "The line number query, POUR question, and criteria question will be displayed in this section."
+                    title: "User Input",
+                    intro: "The options for the first ten questions and input field for the next five questions are displayed here."
                 },
                 {
                     element: document.querySelector('#sidebar'),
                     title: "SideBar",
-                    intro: "Instructions for the current question and the output from running the code will be shown here."
+                    intro: "Instructions for the game, question numbers and buttons beneficial to the user are shown here."
                 },
                 {
                     element: document.querySelector('#open-account'),
@@ -130,12 +105,7 @@ function onTutorialReset(){
                 {
                     element: document.querySelector('#questions-headings-and-labels'),
                     title: "Question Numbers",
-                    intro: "The current question number and remaining criteria to be identified will be displayed here."
-                },
-                {
-                    element: document.querySelector('#wifi-bars-and-label'),
-                    title: "WiFi Bars",
-                    intro: "The remaining WiFi bars are shown here; the game ends when all bars are depleted."
+                    intro: "The current question number and checkposts cleared are displayed here."
                 },
                 {
                     element: document.querySelector('#tutorial-reset-button'),
@@ -145,7 +115,7 @@ function onTutorialReset(){
                 {
                     element: document.querySelector('#rank-image'),
                     title: "Rank",
-                    intro: "Users will be promoted to a higher rank upon reaching every 1,000-point milestone."
+                    intro: "Users will be promoted to a higher rank upon reaching every 20-point milestone."
                 }
             ]
         });
