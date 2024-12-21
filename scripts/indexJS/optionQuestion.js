@@ -335,9 +335,9 @@ document.getElementById("input-form").addEventListener("submit", function(event)
         })
         .then((data) => {
             var fetchedResult = data.scenario;
-            var resultAccuracy = getSubstringBetween(fetchedResult, "Accuracy: ", "Rating");
-            var resultRating = getSubstringBetween(fetchedResult, "Rating: ", "Explanation");
-            var resultExplanation = getSubstringFromWord(fetchedResult, "Explanation: ");
+            var resultAccuracy = getSubstringBetween(fetchedResult, "Accuracy: ", "Rating").replace(/\n/g, " ");
+            var resultRating = getSubstringBetween(fetchedResult, "Rating: ", "Explanation").replace(/\n/g, " ");
+            var resultExplanation = getSubstringFromWord(fetchedResult, "Explanation: ").replace(/\n/g, " ");
 
             stop = true;
 
@@ -350,11 +350,12 @@ document.getElementById("input-form").addEventListener("submit", function(event)
             document.getElementById('spinner-circle').style.display = "none";
             document.getElementById('spinner-overlay').style.display = "none";
 
-            if(onHintTaken){
-                currentScore = currentScore + (parseInt(getSubstringFromWord(resultRating, "", "/")) / 2);
-            } else {
-                currentScore = currentScore + parseInt(getSubstringFromWord(resultRating, "", "/"));
+            if (onHintTaken) {                 
+                currentScore = currentScore + Math.ceil(parseInt(getSubstringFromWord(resultRating, "", "/")) / 2);             
+            } else {                 
+                currentScore = currentScore + parseInt(getSubstringFromWord(resultRating, "", "/"));             
             }
+
             onScoreIncrease();
 
             if(resultAccuracy.includes("Not") || resultAccuracy.includes("In")){
