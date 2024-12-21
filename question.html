@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="icon" type="image/png" href="./Images/web-dev.png">
 
-    <script>if (sessionStorage.getItem('question-number') !== null){} else {window.location.replace("./index.html");}</script>
+    <script>if (sessionStorage.getItem('question-number') !== null) { } else { window.location.replace("./index.html"); }</script>
 
-	<script>var exports = {};</script>
-    
+    <script>var exports = {};</script>
+
     <link rel="stylesheet" href="./src/bootstrap/main.css">
     <script src="./scripts/dependencies/bootstrap.bundle.min.js"></script>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/1	1.9.0/styles/sunburst.css">
-	<script src= "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>	
-	<script>hljs.highlightAll();</script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/1	1.9.0/styles/sunburst.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 
-	<link rel="stylesheet" href="./src/googlefont/main.css">
-	<link rel="stylesheet" href="./src/indexCSS/main.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="./src/googlefont/main.css">
+    <link rel="stylesheet" href="./src/indexCSS/main.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <script src="./scripts/indexJS/cloud_connect.js"></script>
 
@@ -35,27 +38,38 @@
 
     <title>Inclusion Investigator Game</title>
 </head>
+
 <body>
-	<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-left: 1vw;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-left: 1vw;">
         <div style="display: flex; flex-wrap: nowrap;">
             <img src="./Images/web-dev.png" alt="Header Web Dev Icon" style="height: 72.5px;">
-	        <div class="days-one-regular" style="font-size: calc(10px + 1.25vw); text-align: left; padding-top: 2vh; padding-bottom: 2vh; padding-left: 2vw; padding-right: 1vw; transform: scaleY(1.5); text-align: center;"><b>&lt;h1&gt;INCLUSION INVESTIGATOR&lt;/h1&gt;</b></div>
+            <div class="days-one-regular"
+                style="font-size: calc(10px + 1.25vw); text-align: left; padding-top: 2vh; padding-bottom: 2vh; padding-left: 2vw; padding-right: 1vw; transform: scaleY(1.5); text-align: center;">
+                <b>&lt;h1&gt;INCLUSION INVESTIGATOR&lt;/h1&gt;</b></div>
         </div>
-        <div class="wallpoet-regular" style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 50px;" id="clock">00:00:00</div>
-        <div class="wallpoet-regular" style="font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 15px;" id="score-text">Score: 0</div>
-        <img id="rank-image" src="./Images/rank0.png" style="height: 60px; width: 60px; margin-right: 0.25vw;" alt="You are at Rank 1">
+        <div class="wallpoet-regular"
+            style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 50px;"
+            id="clock">00:00:00</div>
+        <div class="wallpoet-regular"
+            style="font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 15px;"
+            id="score-text">Score: 0</div>
+        <img id="rank-image" src="./Images/rank0.png" style="height: 60px; width: 60px; margin-right: 0.25vw;"
+            alt="You are at Rank 1">
     </div>
-	
-	<div class="content" style="display: flex; flex-wrap: wrap;">
-        <div id="mainbar" style="flex: 1; transition: margin-right 1s; margin-left: 15px; margin-right: 15px; overflow: hidden; margin-bottom: 10px;">
-            <div id="main-code-area" style="display: none;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
+
+    <div class="content" style="display: flex; flex-wrap: wrap;">
+        <div id="mainbar"
+            style="flex: 1; transition: margin-right 1s; margin-left: 15px; margin-right: 15px; overflow: hidden; margin-bottom: 10px;">
+            <div id="main-code-area" style="display: none;">
+                <pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
                     <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>SCENARIO:</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;"><span class="material-symbols-outlined" style="font-size: 22.5px;"><b>arrow_back</b></span></button></div>
                 </div><code id="code" class="html" style="overflow-y: auto; height: 35vh; tab-size: 4; font-family: 'Times New Roman', Times, serif; padding: 10px 20px 30px 20px; font-size: large; word-wrap: break-word; overflow-wrap: break-word; white-space: normal; text-align: justify;" onkeydown="scrollWithArrows(event)" tabindex="0">
                 </code></pre>
             </div>
-            <div id="main-start-area" style="display: block;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
+            <div id="main-start-area" style="display: block;">
+                <pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
                     <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>ABOUT (Start Button at the end):</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;"><span class="material-symbols-outlined" style="font-size: 22.5px;"><b>arrow_back</b></span></button></div>
@@ -65,14 +79,16 @@ This game is designed to raise awareness about accessibility challenges and the 
 1. Multiple Choice (Questions 1–10):
 
 • Each question presents three options to address the accessibility issue.
-• Selecting the correct option earns 5 points, while an incorrect answer yields 0 points.
-• All scenarios, options, and explanations are generated at random using OpenAI.
+• Selecting the correct option earns 5 points; incorrect answers earns 0 points.
+• All scenarios, options, and explanations are generated using an AI-based system.
+• The "50-50" button removes one incorrect answer, and the correct answer now awards 2 points instead.
 
 2.Short Answer Questions (Questions 11–15):
 
-• Players must provide a short, written response proposing a solution to the given accessibility issue.
+• Players must provide a short, written response proposing a solution to given issue.
 • Responses are scored on a 1 to 10 scale based on their effectiveness and relevance.
-• All scenarios and scoring of user responses are handled by OpenAI, which evaluates their effectiveness and relevance.
+• All scenarios and scoring of user responses are handled by an AI-based system.
+• Clicking the "Hint" button adds a hint, but the correct answer now awards half the original points.
 
 The goal is to achieve the highest score out of hundred in the shortest amount of time!
 (The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG21/" target="_blank">WCAG 2.1</a> or using the button below.)
@@ -83,113 +99,180 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
             </code></pre>
             </div>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 10px;">
-                <button id="redirect-to-WCAG" type="button" class="btn btn-outline-primary" onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);' style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"><u>WCAG 2.1</u></button>
+                <button id="WCAG-button" type="button" class="btn btn-outline-primary"
+                    onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);'
+                    style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"
+                    disabled><u>WCAG 2.1</u></button>
+                <button id="hint-button" type="button" class="btn btn-outline-primary" onclick='onHint();'
+                    style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"
+                    disabled>HINT</button>
             </div>
             <div id="carouselExampleIndicators" class="carousel slide" style="transition: 1s; width: 100%;">
                 <div class="carousel-indicators" style="display: none;">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" id="goToPart1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" id="goToPart1Result"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1" id="goToPart1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2" id="goToPart1Result"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
+                    <div class="carousel-item active"
+                        style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                         <div id="options-container">
-                            <button type="button" id="optionAButton" class="btn btn-outline-primary" style="text-align: left; width: 100%; height: 75px; margin-bottom: 20px; font-size: large; overflow-y: auto;" onclick="onOptionChosen('A')" disabled>OPTION A</button>
-                            <button type="button" id="optionBButton" class="btn btn-outline-primary" style="text-align: left; width: 100%; height: 75px; margin-bottom: 20px; font-size: large; overflow-y: auto;" onclick="onOptionChosen('B')" disabled>OPTION B</button>
-                            <button type="button" id="optionCButton" class="btn btn-outline-primary" style="text-align: left; width: 100%; height: 75px; margin-bottom: 00px; font-size: large; overflow-y: auto;" onclick="onOptionChosen('C')" disabled>OPTION C</button>
-                        </div> 
+                            <button type="button" id="optionAButton" class="btn btn-outline-primary"
+                                style="text-align: left; width: 100%; height: 75px; margin-bottom: 20px; font-size: large; overflow-y: auto;"
+                                onclick="onOptionChosen('A')" disabled>OPTION A</button>
+                            <button type="button" id="optionBButton" class="btn btn-outline-primary"
+                                style="text-align: left; width: 100%; height: 75px; margin-bottom: 20px; font-size: large; overflow-y: auto;"
+                                onclick="onOptionChosen('B')" disabled>OPTION B</button>
+                            <button type="button" id="optionCButton" class="btn btn-outline-primary"
+                                style="text-align: left; width: 100%; height: 75px; margin-bottom: 00px; font-size: large; overflow-y: auto;"
+                                onclick="onOptionChosen('C')" disabled>OPTION C</button>
+                        </div>
                         <div id="input-container" style="height: 265px; display: none;">
                             <form id="input-form" style="text-align: center; margin: 0px 10px">
                                 <div class="mb-3">
-                                    <label class="lobster-regular" style="text-align: center; width: 100%; font-size: xx-large; margin-bottom: 10px;" for="input-form-user-answer" class="form-label">
+                                    <label class="lobster-regular"
+                                        style="text-align: center; width: 100%; font-size: xx-large; margin-bottom: 10px;"
+                                        for="input-form-user-answer" class="form-label">
                                         Enter Possible Solution
                                     </label>
-                                    <textarea class="form-control" id="input-form-user-answer" rows="4" style="font-size: large; margin-bottom: 20px;"></textarea>
+                                    <textarea class="form-control" id="input-form-user-answer" rows="4"
+                                        style="font-size: large; margin-bottom: 20px;"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary" style="font-size: x-large; height: 50px; width: 150px;" id="input-form-submit" disabled>SUBMIT</button>
+                                <button type="submit" class="btn btn-primary"
+                                    style="font-size: x-large; height: 50px; width: 150px;" id="input-form-submit"
+                                    disabled>SUBMIT</button>
                             </form>
-                        </div>                        
+                        </div>
                     </div>
-                    <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
+                    <div class="carousel-item"
+                        style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                         <div id="part1Result" style="height: 265px;">
                         </div>
                     </div>
                 </div>
-                <button id="button-previous-question" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" style="display: none;">
+                <button id="button-previous-question" class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" style="display: none;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button id="button-next-question" class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" style="display: none;">
+                <button id="button-next-question" class="carousel-control-next" type="button"
+                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next" style="display: none;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </div>
 
-		<div id="sidebar" style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px; display: flex; flex-direction: column; margin-bottom: 10px;">
+        <div id="sidebar"
+            style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px; display: flex; flex-direction: column; margin-bottom: 10px;">
             <div style="display: flex; flex-wrap: nowrap; padding-right: 15px; padding-left: 15px; margin-bottom: 0px;">
                 <div style="width: 40px; padding-top: 7px; padding-right: 20px;" class="dropdown">
-                    <button id="open-account" aria-label="account-button" data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
-                        <span class="material-symbols-outlined" style="font-size: 21.5px; font-weight: bold;">person</span>
+                    <button id="open-account" aria-label="account-button" data-bs-toggle="dropdown"
+                        aria-expanded="false" type="button"
+                        style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;"
+                        onmouseover="this.style.borderColor ='black'; this.style.color ='black'"
+                        onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
+                        <span class="material-symbols-outlined"
+                            style="font-size: 21.5px; font-weight: bold;">person</span>
                     </button>
                     <ul class="dropdown-menu" style="padding: 10px; width: 300px;">
-                        <li style="cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="account-name">Name: </li>
-                        <li style="cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="account-email">Email: </li>
-                        <li style="cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="account-score">Score: </li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li style="cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                            id="account-name">Name: </li>
+                        <li style="cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                            id="account-email">Email: </li>
+                        <li style="cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                            id="account-score">Score: </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="specialEffectsToggle" checked>
+                                <input class="form-check-input" type="checkbox" role="switch" id="specialEffectsToggle"
+                                    checked>
                                 <label class="form-check-label" for="specialEffectsToggle">Special Effects</label>
                             </div>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="./index.html" style="padding-left: 0%;">Restart</a></li>
-                        <li><a class="dropdown-item" href="https://swaroopjoshi.in/project/sugamyata/" target="_blank" style="padding-left: 0%;">About Us</a></li>
+                        <li><a class="dropdown-item" href="https://swaroopjoshi.in/project/sugamyata/" target="_blank"
+                                style="padding-left: 0%;">About Us</a></li>
                     </ul>
                 </div>
-                <button id="open-leaderboard" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; border: 3px solid grey; color: grey; padding: 0%; display: flex; justify-content: center; align-items: center;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="document.getElementById('leaderboardModalOpenButton').click();">
-                    <span class="material-symbols-outlined" style="font-size: 21.5px; font-weight: bold;">leaderboard</span>
+                <button id="open-leaderboard" type="button"
+                    style="height: 30px; width: 30px; align-self: center; border-radius: 100px; border: 3px solid grey; color: grey; padding: 0%; display: flex; justify-content: center; align-items: center;"
+                    onmouseover="this.style.borderColor ='black'; this.style.color ='black'"
+                    onmouseout="this.style.borderColor='grey'; this.style.color ='grey'"
+                    onclick="document.getElementById('leaderboardModalOpenButton').click();">
+                    <span class="material-symbols-outlined"
+                        style="font-size: 21.5px; font-weight: bold;">leaderboard</span>
                 </button>
-                <div style="font-size: x-large; text-align: center; flex: 1; padding-top: 5px; color: gray;" class="lobster-regular" id="clock-mini">Question Timer :: 00:00:00</div>
-                <div id="tutorial-reset-button" style="margin-top: 7px; margin-right: 10px; display: flex; align-items: center; justify-content: center;">
+                <div style="font-size: x-large; text-align: center; flex: 1; padding-top: 5px; color: gray;"
+                    class="lobster-regular" id="clock-mini">Question Timer :: 00:00:00</div>
+                <div id="tutorial-reset-button"
+                    style="margin-top: 7px; margin-right: 10px; display: flex; align-items: center; justify-content: center;">
                     <button type="button" style="position: relative; height: 30px; width: 30px; border-radius: 100px; border: 3px solid grey; 
                             color: grey; display: flex; justify-content: center; align-items: center; 
-                            text-align: center; padding: 0;" 
-                        onmouseover="this.style.borderColor ='black'; this.style.color ='black'" 
-                        onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" 
+                            text-align: center; padding: 0;"
+                        onmouseover="this.style.borderColor ='black'; this.style.color ='black'"
+                        onmouseout="this.style.borderColor='grey'; this.style.color ='grey'"
                         onclick="onTutorialReset();">
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%); font-size: 22.5px;"><b>t</b></span>
+                        <span
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%); font-size: 22.5px;"><b>t</b></span>
                     </button>
                 </div>
-                <div style="padding-top: 7px;"><button id="toggle-button-to-hide-info" type="button" 
-                        style="height: 30px; width: 30px; border-radius: 100px; border: 3px solid grey; 
+                <div style="padding-top: 7px;"><button id="toggle-button-to-hide-info" type="button" style="height: 30px; width: 30px; border-radius: 100px; border: 3px solid grey; 
                             color: grey; display: flex; justify-content: center; align-items: center; 
-                            text-align: center; padding: 0;" 
-                        onmouseover="this.style.borderColor ='black'; this.style.color ='black'" 
-                        onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" 
+                            text-align: center; padding: 0;"
+                        onmouseover="this.style.borderColor ='black'; this.style.color ='black'"
+                        onmouseout="this.style.borderColor='grey'; this.style.color ='grey'"
                         onclick="toggleSidebarOff();">
-                    <span class="material-symbols-outlined" style="font-size: 22.5px; line-height: 1;"><b>arrow_forward</b></span>
-                </button></div>
+                        <span class="material-symbols-outlined"
+                            style="font-size: 22.5px; line-height: 1;"><b>arrow_forward</b></span>
+                    </button></div>
             </div>
-            <div id="sidebar-main-content">    
+            <div id="sidebar-main-content">
                 <div id="info-container" style="padding-right: 15px; padding-left: 15px; margin-bottom: 10px;">
                     <div id="instructions-block-in-sidebar">
-                        <h2 style="margin-top: 0%; text-align: center; margin-bottom: 0%;"><i>Instructions:</i></h2>
-                        <p style="font-size: medium; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal; white-space: pre-line;">
-1. Multiple Choice (Questions 1–10):
-
+                        <h2 style="margin-top: 0%; text-align: center; margin-bottom: 0%;" class="lobster-regular" ><i>Instructions:</i></h2>
+                        <div class="accordion" id="accordionExample" style="margin: 20px 0px;">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-family: 'Times New Roman', Times, serif; font-size: large; background-color: rgb(245, 245, 245);">
+                                        1. Multiple Choice (Questions 1–10):
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body" style="font-family: 'Times New Roman', Times, serif; line-height: normal; white-space: pre-line; padding: 0px 10px 10px 10px; font-size: medium; background-color: rgb(245, 245, 245);">
 • Each question presents three options to address the accessibility issue.
-• Selecting the correct option earns 5 points, while an incorrect answer yields 0 points.
-• All scenarios, options, and explanations are generated at random using OpenAI.
-
-2.Short Answer Questions (Questions 11–15):
-
-• Players must provide a short, written response proposing a solution to the given issue.
+• Selecting the correct option earns 5 points; incorrect answers earns 0 points.
+• All scenarios, options, and explanations are generated using an AI-based system.
+• The "50-50" button removes one incorrect answer, and the correct answer now awards 2 points instead.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-family: 'Times New Roman', Times, serif; font-size: large; background-color: rgb(245, 245, 245);">
+                                        2. Short Answer Questions (Questions 11–15):
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body" style="font-family: 'Times New Roman', Times, serif; line-height: normal; white-space: pre-line; padding: 0px 10px 10px 10px; font-size: medium; background-color: rgb(245, 245, 245);">
+• Players must provide a short, written response proposing a solution to the issue.
 • Responses are scored on a 1 to 10 scale based on their effectiveness and relevance.
-• All scenarios and scoring of user responses are handled by OpenAI.
-
-Achieve the highest score out of hundred in the shortest amount of time!
-                        </p>
+• All scenarios and scoring of user responses are handled by an AI-based system.
+• Clicking the "Hint" button adds a hint, but the correct answer now awards half the original points.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div style="display: flex; flex-wrap: wrap; padding-bottom: 10px;">
@@ -197,41 +280,56 @@ Achieve the highest score out of hundred in the shortest amount of time!
                     </div>
                     <div style="flex: 4; text-align: center;" id="questions-headings-and-labels">
                         <div style="display: flex; flex-wrap: wrap;">
-                            <h4 class="lobster-regular" id="question-label-text" style="text-align: center; flex: 1;">Question: 1</h5>
+                            <h4 class="lobster-regular" id="question-label-text" style="text-align: center; flex: 1;">
+                                Question: 1</h4>
                         </div>
                         <div id="question-label-container">
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1">1</button>
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-2" tabindex="-1">2</button>
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-3" tabindex="-1">3</button>
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-4" tabindex="-1">4</button>
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-5" tabindex="-1">5</button>
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-6" tabindex="-1">6</button>
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-7" tabindex="-1">7</button>
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-8" tabindex="-1">8</button>
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-9" tabindex="-1">9</button>
-                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-10" tabindex="-1">10</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-1"
+                                tabindex="-1">1</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-2"
+                                tabindex="-1">2</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-3"
+                                tabindex="-1">3</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-4"
+                                tabindex="-1">4</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-5"
+                                tabindex="-1">5</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-6"
+                                tabindex="-1">6</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-7"
+                                tabindex="-1">7</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-8"
+                                tabindex="-1">8</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-9"
+                                tabindex="-1">9</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-10"
+                                tabindex="-1">10</button>
                         </div>
                     </div>
                     <div style="flex: 1;">
                     </div>
                 </div>
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#leaderboardResults" id="leaderboardModalOpenButton" style="display: none;">Leaderboard Modal Open Button
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#leaderboardResults"
+        id="leaderboardModalOpenButton" style="display: none;">Leaderboard Modal Open Button
     </button>
-  
-    <div class="modal fade" id="leaderboardResults" data-bs-keyboard="false" tabindex="-1" aria-labelledby="leaderboardResultsLabel" aria-hidden="true">
+
+    <div class="modal fade" id="leaderboardResults" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="leaderboardResultsLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-3 lobster-regular" id="leaderboardResultsLabel" style="text-align: center; width: 100%;">LEADERBOARD</h1>
+                    <h1 class="modal-title fs-3 lobster-regular" id="leaderboardResultsLabel"
+                        style="text-align: center; width: 100%;">LEADERBOARD</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
                     <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-                        <select class="form-control" id="leaderboard-filter-field" name="leaderboard-filter-field" required="" style="width: 300px; margin: 0px 10px;">
+                        <select class="form-control" id="leaderboard-filter-field" name="leaderboard-filter-field"
+                            required="" style="width: 300px; margin: 0px 10px;">
                             <option value="All Time Field" style="cursor: default;">All Time</option>
                             <option value="Today Field" style="cursor: default;">Today</option>
                             <option value="Past Week Field" style="cursor: default;">Past Week</option>
@@ -239,71 +337,82 @@ Achieve the highest score out of hundred in the shortest amount of time!
                             <option value="Past 6 Months Field" style="cursor: default;">Past 6 Months</option>
                             <option value="Past Year Field" style="cursor: default;">Past Year</option>
                         </select>
-                        <div class="dropdown-center">  
-                            <button class="btn btn-primary d-flex justify-content-center align-items-center" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin: 0px 10px;">
+                        <div class="dropdown-center">
+                            <button class="btn btn-primary d-flex justify-content-center align-items-center"
+                                data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="margin: 0px 10px;">
                                 <span class="material-symbols-outlined">
                                     filter_list
                                 </span>
                             </button>
                             <div class="dropdown-menu" style="width: 350px; padding: 20px; font-size: large;">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="AllUsersRadio" checked>
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter"
+                                        id="AllUsersRadio" checked>
                                     <label class="form-check-label" for="AllUsersRadio">
                                         All Users
                                     </label>
                                 </div>
                                 <br>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="High School Student Radio">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter"
+                                        id="High School Student Radio">
                                     <label class="form-check-label" for="High School Student Radio">
                                         High School Students Only
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Undergraduate Student Radio">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter"
+                                        id="Undergraduate Student Radio">
                                     <label class="form-check-label" for="Undergraduate Student Radio">
                                         Undergraduate Students Only
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Graduate Student Radio">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter"
+                                        id="Graduate Student Radio">
                                     <label class="form-check-label" for="Graduate Student Radio">
                                         Graduate Students Only
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Working Professional Radio">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter"
+                                        id="Working Professional Radio">
                                     <label class="form-check-label" for="Working Professional Radio">
                                         Working Professionals Only
                                     </label>
                                 </div>
                                 <br>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Novice Radio">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter"
+                                        id="Novice Radio">
                                     <label class="form-check-label" for="Novice Radio">
                                         Novice Proficiency Only
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Competent Radio">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter"
+                                        id="Competent Radio">
                                     <label class="form-check-label" for="Competent Radio">
                                         Competent Proficiency Only
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Proficient Radio">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter"
+                                        id="Proficient Radio">
                                     <label class="form-check-label" for="Proficient Radio">
                                         Proficient Proficiency Only
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Expert Radio">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter"
+                                        id="Expert Radio">
                                     <label class="form-check-label" for="Expert Radio">
                                         Expert Proficiency Only
                                     </label>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                     <div class="cursive-regular" style="display: flex; font-size: x-large; width: 100%;">
                         <div style="text-align: left; flex: 2; margin-left: 50px;"><b><i>Name</i></b></div>
@@ -316,130 +425,180 @@ Achieve the highest score out of hundred in the shortest amount of time!
         </div>
     </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login" id="login-open" style="display: none;">Login Open Button
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login" id="login-open"
+        style="display: none;">Login Open Button
     </button>
-  
-    <div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+
+    <div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="loginLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-3 lobster-regular" id="loginLabel" style="width: 100%; text-align: center;">Player Entry</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="display: none;" id="login-close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="First-Modal" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <form id="login-info" style="padding: 20px;">
-                                <div class="mb-3">
-                                    <label for="login-name" class="form-label">Your Name: <span style="color: rgb(225, 1, 1);">*</span></label>
-                                    <input type="text" class="form-control" id="login-name" name="login-name" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="login-email" class="form-label">Email Address: <span style="color: rgb(225, 1, 1);">*</span></label>
-                                    <input type="email" class="form-control" id="login-email" name="login-email" required>
-                                </div>
-                                <div style="display: flex;">
-                                    <div class="mb-3" style="flex: 1; margin-right: 10px;">
-                                        <label for="login-field" class="form-label" id="login-field-label">User Type: <span style="color: rgb(225, 0, 0);">*</span></label>
-                                        <select class="form-control" id="login-field" name="login-field" required>
-                                            <option value="High School Student">High School Student</option>
-                                            <option value="Undergraduate Student">Undergraduate Student</option>
-                                            <option value="Graduate Student">Graduate Student</option>
-                                            <option value="Working Professional">Working Professional</option>
-                                            <option value="Other">Other</option>
-                                        </select>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-3 lobster-regular" id="loginLabel"
+                        style="width: 100%; text-align: center;">Player Entry</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="display: none;" id="login-close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="First-Modal" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <form id="login-info" style="padding: 20px;">
+                                    <div class="mb-3">
+                                        <label for="login-name" class="form-label">Your Name: <span
+                                                style="color: rgb(225, 1, 1);">*</span></label>
+                                        <input type="text" class="form-control" id="login-name" name="login-name"
+                                            required>
                                     </div>
-                                    <div class="mb-3" style="flex: 1; margin-left: 10px;" id="sub-field-dropdowns">
-                                        <label id="subfield-highschool-label" for="subfield-highschool" class="form-label" style="display: block;">School Course: <span style="color: rgb(225, 0, 0);">*</span></label>
-                                        <input type="text" class="form-control" id="subfield-highschool" class="sub-field-dropdown" name="subfield-highschool" style="display: block;">
-                                        
-                                        <label id="subfield-undergrad-label" for="subfield-undergrad" class="form-label" style="display: none;">Undergraduate Course: <span style="color: rgb(225, 0, 0);">*</span></label>
-                                        <input type="text" class="form-control" id="subfield-undergrad" class="sub-field-dropdown" name="subfield-undergrad" style="display: none;">
-                                        
-                                        <label id="subfield-grad-label" for="subfield-grad" class="form-label" style="display: none;">Graduate Course: <span style="color: rgb(225, 0, 0);">*</span></label>
-                                        <input type="text" class="form-control" id="subfield-grad" class="sub-field-dropdown" name="subfield-grad" style="display: none;">
-                                        
-                                        <label id="subfield-worker-label" for="subfield-worker" class="form-label" style="display: none;">Profession: <span style="color: rgb(225, 0, 0);">*</span></label>
-                                        <input type="text" class="form-control" id="subfield-worker" class="sub-field-dropdown" name="subfield-worker" style="display: none;">
-                                        
-                                        <label id="subfield-other-label" for="subfield-other" class="form-label" style="display: none;">Other: <span style="color: rgb(225, 0, 0);">*</span></label>
-                                        <input type="text" class="form-control" id="subfield-other" class="sub-field-dropdown" name="subfield-other" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="login-email" class="form-label">Email Address: <span
+                                                style="color: rgb(225, 1, 1);">*</span></label>
+                                        <input type="email" class="form-control" id="login-email" name="login-email"
+                                            required>
                                     </div>
-                                </div>
-                                <div style="display: flex;">
-                                    <div class="mb-3" style="flex: 1; margin-right: 10px; margin-bottom: 0%; padding: 0%;">
-                                        <label for="login-accessibilty-knowledge" class="form-label" id="login-accessibility-knowledge-label" style="margin: 0%;">Accessibility Proficiency: <span style="color: rgb(225, 1, 1);">*</span></label>
+                                    <div style="display: flex;">
+                                        <div class="mb-3" style="flex: 1; margin-right: 10px;">
+                                            <label for="login-field" class="form-label" id="login-field-label">User
+                                                Type: <span style="color: rgb(225, 0, 0);">*</span></label>
+                                            <select class="form-control" id="login-field" name="login-field" required>
+                                                <option value="High School Student">High School Student</option>
+                                                <option value="Undergraduate Student">Undergraduate Student</option>
+                                                <option value="Graduate Student">Graduate Student</option>
+                                                <option value="Working Professional">Working Professional</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3" style="flex: 1; margin-left: 10px;" id="sub-field-dropdowns">
+                                            <label id="subfield-highschool-label" for="subfield-highschool"
+                                                class="form-label" style="display: block;">School Course: <span
+                                                    style="color: rgb(225, 0, 0);">*</span></label>
+                                            <input type="text" class="form-control" id="subfield-highschool"
+                                                class="sub-field-dropdown" name="subfield-highschool"
+                                                style="display: block;">
+
+                                            <label id="subfield-undergrad-label" for="subfield-undergrad"
+                                                class="form-label" style="display: none;">Undergraduate Course: <span
+                                                    style="color: rgb(225, 0, 0);">*</span></label>
+                                            <input type="text" class="form-control" id="subfield-undergrad"
+                                                class="sub-field-dropdown" name="subfield-undergrad"
+                                                style="display: none;">
+
+                                            <label id="subfield-grad-label" for="subfield-grad" class="form-label"
+                                                style="display: none;">Graduate Course: <span
+                                                    style="color: rgb(225, 0, 0);">*</span></label>
+                                            <input type="text" class="form-control" id="subfield-grad"
+                                                class="sub-field-dropdown" name="subfield-grad" style="display: none;">
+
+                                            <label id="subfield-worker-label" for="subfield-worker" class="form-label"
+                                                style="display: none;">Profession: <span
+                                                    style="color: rgb(225, 0, 0);">*</span></label>
+                                            <input type="text" class="form-control" id="subfield-worker"
+                                                class="sub-field-dropdown" name="subfield-worker"
+                                                style="display: none;">
+
+                                            <label id="subfield-other-label" for="subfield-other" class="form-label"
+                                                style="display: none;">Other: <span
+                                                    style="color: rgb(225, 0, 0);">*</span></label>
+                                            <input type="text" class="form-control" id="subfield-other"
+                                                class="sub-field-dropdown" name="subfield-other" style="display: none;">
+                                        </div>
                                     </div>
-                                    <div class="mb-3" style="flex: 1; margin-left: 10px; margin-bottom: 0%; padding: 0%;">
-                                        <label for="login-area" class="form-label" id="login-area-label" style="margin: 0%;">Area: <span style="color: rgb(225, 1, 1);">*</span></label>
+                                    <div style="display: flex;">
+                                        <div class="mb-3"
+                                            style="flex: 1; margin-right: 10px; margin-bottom: 0%; padding: 0%;">
+                                            <label for="login-accessibilty-knowledge" class="form-label"
+                                                id="login-accessibility-knowledge-label"
+                                                style="margin: 0%;">Accessibility Proficiency: <span
+                                                    style="color: rgb(225, 1, 1);">*</span></label>
+                                        </div>
+                                        <div class="mb-3"
+                                            style="flex: 1; margin-left: 10px; margin-bottom: 0%; padding: 0%;">
+                                            <label for="login-area" class="form-label" id="login-area-label"
+                                                style="margin: 0%;">Area: <span
+                                                    style="color: rgb(225, 1, 1);">*</span></label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div style="display: flex;">
-                                    <div class="mb-3" style="flex: 1; margin-right: 10px; margin-top: 0%; padding: 0%;">
-                                        <select class="form-control" id="login-accessibilty-knowledge" name="login-accessibilty-knowledge" required>
-                                            <option value="Novice">Novice</option>
-                                            <option value="Competent">Competent</option>
-                                            <option value="Proficient">Proficient</option>
-                                            <option value="Expert">Expert</option>
-                                        </select>
+                                    <div style="display: flex;">
+                                        <div class="mb-3"
+                                            style="flex: 1; margin-right: 10px; margin-top: 0%; padding: 0%;">
+                                            <select class="form-control" id="login-accessibilty-knowledge"
+                                                name="login-accessibilty-knowledge" required>
+                                                <option value="Novice">Novice</option>
+                                                <option value="Competent">Competent</option>
+                                                <option value="Proficient">Proficient</option>
+                                                <option value="Expert">Expert</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3"
+                                            style="flex: 1; margin-left: 10px; margin-top: 0%; padding: 0%;">
+                                            <select class="form-control" id="login-area" name="login-area" required>
+                                                <option value="Africa">Africa</option>
+                                                <option value="America">America</option>
+                                                <option value="Asia">Asia</option>
+                                                <option value="Europe">Europe</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="mb-3" style="flex: 1; margin-left: 10px; margin-top: 0%; padding: 0%;">
-                                        <select class="form-control" id="login-area" name="login-area" required>
-                                            <option value="Africa">Africa</option>
-                                            <option value="America">America</option>
-                                            <option value="Asia">Asia</option>
-                                            <option value="Europe">Europe</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <button type="button submit" class="btn btn-outline-primary" style="margin-top: 20px; width: 200px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);">Next</button>
-                            </form>
+                                    <button type="button submit" class="btn btn-outline-primary"
+                                        style="margin-top: 20px; width: 200px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);">Next</button>
+                                </form>
+                            </div>
+                            <div class="carousel-item">
+                                <video controls="controls" width="100%" name="Video Name">
+                                    <source src="./Images/InclusionInvestigatorDemo.mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <br>
+                                <br>
+                                <button id="login-enter-button" type="button" class="btn btn-outline-primary"
+                                    style="margin-top: 20px; width: 200px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);"
+                                    onclick="document.getElementById('login-close').click(); onTutorialReset();">LET'S
+                                    GO</button>
+                            </div>
                         </div>
-                        <div class="carousel-item">
-                            <video controls="controls" width="100%" name="Video Name">
-                                <source src="./Images/InclusionInvestigatorDemo.mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <br>
-                            <br>
-                            <button id="login-enter-button" type="button" class="btn btn-outline-primary" style="margin-top: 20px; width: 200px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);" onclick="document.getElementById('login-close').click(); onTutorialReset();">LET'S GO</button>
-                        </div>
+                        <button class="carousel-control-next" type="button" data-bs-target="#First-Modal"
+                            data-bs-slide="next" id="First-Modal-Next" style="display: none;">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <button class="carousel-control-next" type="button" data-bs-target="#First-Modal" data-bs-slide="next" id="First-Modal-Next" style="display: none;">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
         </div>
-        </div>
     </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#congratsModal" id="congratsModalOpenButton" style="display: none;">Congratulations Modal Open Button
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#congratsModal"
+        id="congratsModalOpenButton" style="display: none;">Congratulations Modal Open Button
     </button>
-  
-    <div class="modal fade" id="congratsModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="congratsModalLabel" aria-hidden="true">
+
+    <div class="modal fade" id="congratsModal" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="congratsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-3 lobster-regular" id="congratsModalLabel" style="text-align: center; width: 100%;">Congratulations</h1>
+                    <h1 class="modal-title fs-3 lobster-regular" id="congratsModalLabel"
+                        style="text-align: center; width: 100%;">Congratulations</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div style="display: flex; justify-content: center; align-items: center;">
-                        <img src="./Images/rank1.png" style="width: 100px; height: 100px;" id="congrats-modal-image" alt="You are at Rank 2">
+                        <img src="./Images/rank1.png" style="width: 100px; height: 100px;" id="congrats-modal-image"
+                            alt="You are at Rank 2">
                     </div>
                     <div style="text-align: center; font-size: large;"><b><i>🌟You've ranked up!🌟</i></b></div>
-                    <div style="text-align: center; font-size: medium;"><i>Your hard work and skill have paid off</i></div>
+                    <div style="text-align: center; font-size: medium;"><i>Your hard work and skill have paid off</i>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="spinner-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.2); z-index: 1998; display: none;"></div>
+    <div id="spinner-overlay"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.2); z-index: 1998; display: none;">
+    </div>
 
-    <div class="spinner-border text-primary" role="status" id="spinner-circle" style="position: fixed; top: 45%; left: 50%; height: 75px; width: 75px; z-index: 1999; display: none;">
+    <div class="spinner-border text-primary" role="status" id="spinner-circle"
+        style="position: fixed; top: 45%; left: 50%; height: 75px; width: 75px; z-index: 1999; display: none;">
         <span class="visually-hidden">Loading...</span>
     </div>
 
@@ -462,5 +621,7 @@ Achieve the highest score out of hundred in the shortest amount of time!
     <script src="./scripts/indexJS/leaderboard.js"></script>
     <script src="./scripts/indexJS/ranks.js"></script>
     <script src="./scripts/indexJS/tutorials.js"></script>
+    <script src="./scripts/indexJS/hint.js"></script>
 </body>
+
 </html>

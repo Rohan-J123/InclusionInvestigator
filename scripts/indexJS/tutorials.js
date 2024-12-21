@@ -6,7 +6,7 @@ function onTutorialReset(){
             steps:[
                 {
                     element: document.querySelector('#main-start-area'),
-                    title: "Code Box",
+                    title: "Scenario Box",
                     intro: "The scenarios will be displayed here once all instructions have been reviewed and the 'Start' button has been pressed."
                 },
                 {
@@ -74,7 +74,7 @@ function onTutorialReset(){
             steps:[
                 {
                     element: document.querySelector('#main-code-area'),
-                    title: "Code Box",
+                    title: "Scenario Box",
                     intro: "The current scenario has been displayed here."
                 },
                 {

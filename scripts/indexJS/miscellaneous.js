@@ -22,7 +22,7 @@ function startButtonPressed(){
     if (element.style.maxHeight) {
         element.style.maxHeight = null;
     } else {
-        element.style.maxHeight = element.scrollHeight + "px";
+        element.style.maxHeight = "100%";
     }
 
     startStop();
@@ -32,6 +32,9 @@ function startButtonPressed(){
     document.getElementById("optionCButton").disabled = false;
     
     document.getElementById("input-form-submit").disabled = false;
+
+    document.getElementById("WCAG-button").disabled = false;
+    document.getElementById("hint-button").disabled = false;
 
     if (document.getElementById("hide-starting-instructions").checked) {
         sessionStorage.setItem('start-dont-show', 'true');

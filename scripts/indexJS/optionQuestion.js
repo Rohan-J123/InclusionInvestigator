@@ -36,6 +36,7 @@ var inputScenario;
 var inputQuestion;
 var inputcorrectAnswer;
 var inputExplanation;
+var inputHint;
 
 if(parseInt(sessionStorage.getItem('question-number')) <= 10){
     document.getElementById('spinner-circle').style.display = "block";
@@ -49,9 +50,16 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
         questionDifficulty = 5;
     }
 
+    var allOptions = ["A", "B", "C"];
+    var randomIndex = Math.floor(Math.random() * allOptions.length);
+    var randomChoice = allOptions[randomIndex];
+
+    // console.log("Correct Option: " + randomChoice);
+
     const payload = {
-        pastScenarios: JSON.parse(sessionStorage.getItem('past-scenarios')),
+        pastScenarios: JSON.parse(sessionStorage.getItem('past-only-scenarios')),
         difficulty: questionDifficulty,
+        correctOption: randomChoice,
     };
     
 
@@ -72,15 +80,15 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
             fetchedData = data.scenario;
             // console.log(fetchedData);
             
-            optionScenario = getSubstringBetween(fetchedData, "Scenario: ", "Question");
-            optionQuestion = getSubstringBetween(fetchedData, "Question: ", "A)");
+            optionScenario = getSubstringBetween(fetchedData, "Scenario: ", "Question").replace(/\n/g, " ");
+            optionQuestion = getSubstringBetween(fetchedData, "Question: ", "A)").replace(/\n/g, " ");
 
-            optionAtext = getSubstringBetween(fetchedData, "A) ", "B)");
-            optionBtext = getSubstringBetween(fetchedData, "B) ", "C)");
-            optionCtext = getSubstringBetween(fetchedData, "C) ", "Correct Answer");
+            optionAtext = getSubstringBetween(fetchedData, "A) ", "B)").replace(/\n/g, " ");
+            optionBtext = getSubstringBetween(fetchedData, "B) ", "C)").replace(/\n/g, " ");
+            optionCtext = getSubstringBetween(fetchedData, "C) ", "Correct Answer").replace(/\n/g, " ");
 
-            optioncorrectAnswer = getSubstringBetween(fetchedData, "Correct Answer: ", "Explanation");
-            optionExplanation = getSubstringFromWord(fetchedData, "Explanation: ");
+            optioncorrectAnswer = getSubstringBetween(fetchedData, "Correct Answer: ", "Explanation").replace(/\n/g, " ");
+            optionExplanation = getSubstringFromWord(fetchedData, "Explanation: ").replace(/\n/g, " ");
 
             document.getElementById('code').innerText = "Scenario: " + optionScenario + "\n\n" + "Question: " + optionQuestion;
 
@@ -135,14 +143,15 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
             return response.json();
         })
         .then((data) => {
-            fetchedData = data.scenario;
+            fetchedData = data.scenario.replace(/\n/g, " ");
             // console.log(fetchedData);
 
-            inputScenario = getSubstringBetween(fetchedData, "Scenario: ", "Question");
-            inputQuestion = getSubstringBetween(fetchedData, "Question: ", "Correct Answer");
+            inputScenario = getSubstringBetween(fetchedData, "Scenario: ", "Question").replace(/\n/g, " ");
+            inputQuestion = getSubstringBetween(fetchedData, "Question: ", "Correct Answer").replace(/\n/g, " ");
 
-            inputcorrectAnswer = getSubstringBetween(fetchedData, "Correct Answer: ", "Explanation");
-            inputExplanation = getSubstringFromWord(fetchedData, "Explanation: ");
+            inputcorrectAnswer = getSubstringBetween(fetchedData, "Correct Answer: ", "Explanation").replace(/\n/g, " ");
+            inputExplanation = getSubstringBetween(fetchedData, "Explanation: ", "Hint").replace(/\n/g, " "); 
+            inputHint = getSubstringFromWord(fetchedData, "Hint: ").replace(/\n/g, " ");
 
             document.getElementById('code').innerText = "Scenario: " + inputScenario + "\n\n" + "Question: " + inputQuestion;
 
@@ -158,6 +167,7 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
 
 function onOptionChosen(optionLetter){
     document.getElementById('code').innerText = document.getElementById('code').innerText + "\n\n" + "A) " + optionAtext + "\nB) " + optionBtext + "\nC) " + optionCtext;
+    
     if(correctAnswer == optionLetter){
         var inner = 
         `<h3 class="lobster-regular" style="text-align: center;">Congratulations!</h3>
@@ -168,7 +178,12 @@ function onOptionChosen(optionLetter){
         </div> `;
         document.getElementById('part1Result').innerHTML = inner;
 
-        currentScore = currentScore + 5;
+        if(onHintTaken){
+            currentScore = currentScore + 2;
+        } else {
+            currentScore = currentScore + 5;
+        }
+        
         onScoreIncrease();
 
         var currentQuestionNumber = parseInt(sessionStorage.getItem('question-number'));
@@ -205,7 +220,7 @@ function onOptionChosen(optionLetter){
     sessionStorage.setItem('past-scenarios', JSON.stringify(pastScenarios));
     
     var pastOnlyScenarios = JSON.parse(sessionStorage.getItem('past-only-scenarios'));
-    pastOnlyScenarios.push(optionScenario);
+    pastOnlyScenarios.push(optionExplanation);
     sessionStorage.setItem('past-only-scenarios', JSON.stringify(pastOnlyScenarios));
 
     document.getElementById('goToPart1Result').click();
@@ -335,7 +350,11 @@ document.getElementById("input-form").addEventListener("submit", function(event)
             document.getElementById('spinner-circle').style.display = "none";
             document.getElementById('spinner-overlay').style.display = "none";
 
-            currentScore = currentScore + parseInt(getSubstringFromWord(resultRating, "", "/"));
+            if(onHintTaken){
+                currentScore = currentScore + (parseInt(getSubstringFromWord(resultRating, "", "/")) / 2);
+            } else {
+                currentScore = currentScore + parseInt(getSubstringFromWord(resultRating, "", "/"));
+            }
             onScoreIncrease();
 
             if(resultAccuracy.includes("Not") || resultAccuracy.includes("In")){
@@ -376,7 +395,7 @@ document.getElementById("input-form").addEventListener("submit", function(event)
             sessionStorage.setItem('past-scenarios', JSON.stringify(pastScenarios));
             
             var pastOnlyScenarios = JSON.parse(sessionStorage.getItem('past-only-scenarios'));
-            pastOnlyScenarios.push(inputScenario);
+            pastOnlyScenarios.push(inputExplanation);
             sessionStorage.setItem('past-only-scenarios', JSON.stringify(pastOnlyScenarios));
 
             document.getElementById('goToPart1Result').click();
