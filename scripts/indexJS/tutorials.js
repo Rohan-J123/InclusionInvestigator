@@ -10,9 +10,19 @@ function onTutorialReset(){
                     intro: "The scenarios will be displayed here once all instructions have been reviewed and the 'Start' button has been pressed."
                 },
                 {
-                    element: document.querySelector('#redirect-to-WCAG'),
+                    element: document.querySelector('#hint-button'),
+                    title: "Hint Button",
+                    intro: "This button removes one of the incorrect options in first ten question and gives out criterion violated in next five questions."
+                },
+                {
+                    element: document.querySelector('#WCAG-button'),
                     title: "WCAG Button",
                     intro: "This button opens a new tab linking to the official WCAG website."
+                },
+                {
+                    element: document.querySelector('#Report-button'),
+                    title: "Report Button",
+                    intro: "This button can be used to report the AI-generated questions."
                 },
                 {
                     element: document.querySelector('#carouselExampleIndicators'),
@@ -78,9 +88,19 @@ function onTutorialReset(){
                     intro: "The current scenario has been displayed here."
                 },
                 {
-                    element: document.querySelector('#redirect-to-WCAG'),
+                    element: document.querySelector('#hint-button'),
+                    title: "Hint Button",
+                    intro: "This button removes one of the incorrect options in first ten question and gives out criterion violated in next five questions."
+                },
+                {
+                    element: document.querySelector('#WCAG-button'),
                     title: "WCAG Button",
                     intro: "This button opens a new tab linking to the official WCAG website."
+                },
+                {
+                    element: document.querySelector('#Report-button'),
+                    title: "Report Button",
+                    intro: "This button can be used to report the AI-generated questions."
                 },
                 {
                     element: document.querySelector('#carouselExampleIndicators'),

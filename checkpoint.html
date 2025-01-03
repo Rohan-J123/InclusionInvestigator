@@ -29,6 +29,8 @@
     <script src="./scripts/dependencies/confetti.browzer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./src/confetti/csshake-slow.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <title>Inclusion Investigator Game</title>
 </head>
 <body>
@@ -49,7 +51,7 @@
         <div class="content" style="flex: 1; display: flex; flex-wrap: wrap; border-color: black; border-width: 2px; border-style: solid; border-radius: 10px; height: 62.5vh; overflow: auto; margin: 20px 0px;">
             <ol id="checkpoint-div" style="margin: 10px; text-align: justify; font-family: 'Times New Roman', Times, serif;">
             </ol>
-        </div>
+        </div>  
 
         <div style="width: 600px; height: 62.5vh; overflow: auto; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px; display: flex; flex-direction: column; margin: 20px; justify-content: center; align-items: center;">   
             <div style="padding: 15px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;" id="questions-headings-and-labels">
@@ -71,12 +73,38 @@
     </div>
     
     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-        <a href="./Images/WCAG Level A.pdf" download="WCAG_LevelA_Criteria.pdf">
-            <button type="button" class="btn btn-primary" style="font-size: x-large;">DOWNLOAD WCAG CRITERIA LIST</button>
-        </a>
+        <button type="button" class="btn btn-primary" style="font-size: x-large;" id="downloadPdf">DOWNLOAD QUESTION LIST</button>
         <button type="button" class="btn btn-primary" style="font-size: x-large;" onclick="continueButton();">CONTINUE</button>
     </div>
     
     <script src="./scripts/checkpointJS/checkpoint.js"></script>
+    <script>
+        document.getElementById('downloadPdf').addEventListener('click', () => {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+
+            let pastScenarios = JSON.parse(sessionStorage.getItem('past-scenarios'));
+
+            let yPosition = 10;
+            const pageHeight = pdf.internal.pageSize.height;
+            const margin = 10;
+            const lineHeight = 10;
+            const paragraphSpacing = 5;
+
+            for (let i = 0; i < pastScenarios.length; i++) {
+                const lines = pdf.splitTextToSize((i + 1) + ") " + pastScenarios[i], 180); 
+
+                if (yPosition + lines.length * lineHeight > pageHeight - 2 * margin) {
+                    pdf.addPage();
+                    yPosition = margin;
+                }
+                pdf.text(lines, 10, yPosition);
+                yPosition += lines.length * lineHeight + paragraphSpacing;
+            }
+
+            pdf.save("WCAG_Question_List.pdf");
+
+        });
+    </script>
 </body>
 </html>

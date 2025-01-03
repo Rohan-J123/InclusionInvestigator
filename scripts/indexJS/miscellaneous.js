@@ -35,6 +35,7 @@ function startButtonPressed(){
 
     document.getElementById("WCAG-button").disabled = false;
     document.getElementById("hint-button").disabled = false;
+    document.getElementById("Report-button").disabled = false;
 
     if (document.getElementById("hide-starting-instructions").checked) {
         sessionStorage.setItem('start-dont-show', 'true');

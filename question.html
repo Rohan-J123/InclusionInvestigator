@@ -91,7 +91,7 @@ This game is designed to raise awareness about accessibility challenges and the 
 • Clicking the "Hint" button adds a hint, but the correct answer now awards half the original points.
 
 The goal is to achieve the highest score out of hundred in the shortest amount of time!
-(The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG21/" target="_blank">WCAG 2.1</a> or using the button below.)
+(The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG22/" target="_blank">WCAG 2.2</a> or using the button below.)
 
 <input type="checkbox" id="hide-starting-instructions"> <label for="hide-starting-instructions">Don't show these instructions again. </label>
 
@@ -99,13 +99,17 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
             </code></pre>
             </div>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 10px;">
-                <button id="WCAG-button" type="button" class="btn btn-outline-primary"
-                    onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);'
-                    style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"
-                    disabled><u>WCAG 2.1</u></button>
                 <button id="hint-button" type="button" class="btn btn-outline-primary" onclick='onHint();'
                     style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"
                     disabled>HINT</button>
+                <button id="WCAG-button" type="button" class="btn btn-outline-primary"
+                    onclick='window.open(`https://www.w3.org/TR/WCAG22/`, `_blank`);'
+                    style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"
+                    disabled><u>WCAG 2.2</u></button>
+                <button id="Report-button" type="button" class="btn btn-outline-primary"
+                    onclick='document.getElementById("reportModalOpenButton").click()'
+                    style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"
+                    disabled>REPORT</button>
             </div>
             <div id="carouselExampleIndicators" class="carousel slide" style="transition: 1s; width: 100%;">
                 <div class="carousel-indicators" style="display: none;">
@@ -593,6 +597,87 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
         </div>
     </div>
 
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reportModal"
+        id="reportModalOpenButton" style="display: none;">Congratulations Modal Open Button
+    </button>
+
+    <div class="modal fade" id="reportModal" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="reportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-3 lobster-regular" id="reportModalLabel"
+                        style="text-align: center; width: 100%;">REPORT</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="report-modal-close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-1" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-1" style="width: 100%; padding: 6px;">Lack of Clarity or Specificity</label>
+                        </div>
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-2" style="width: 100%; padding: 6px;">Inaccurate Information</label>
+                        </div>
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-3" style="width: 100%; padding: 6px;">Ethical or Bias Concern</label>
+                        </div>
+                    </div>
+
+                    <div class="row" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-4" style="width: 100%; padding: 6px;">Poor Grammar or Syntax</label>
+                        </div>
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-5" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-5" style="width: 100%; padding: 6px;">Overly Complex Language</label>
+                        </div>
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-6" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-6" style="width: 100%; padding: 6px;">Inappropriate Tone or Intent</label>
+                        </div>
+                    </div>
+
+                    <div class="row" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-7" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-7" style="width: 100%; padding: 6px;">Repeated Question</label>
+                        </div>
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-8" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-8" style="width: 100%; padding: 6px;">Contextually Incorrect</label>
+                        </div>
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-9" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-9" style="width: 100%; padding: 6px;">Technical Issue</label>
+                        </div>
+                    </div>
+
+                    <div class="row" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <div class="col-md-4" style="flex: 1;">
+                        </div>
+                        <div class="col-md-4" style="flex: 1;">
+                            <input type="checkbox" class="btn-check" id="btn-check-10" autocomplete="off" style="width: 100%;" onclick="checkSelection(this)">
+                            <label class="btn btn-outline-primary" for="btn-check-10" style="width: 100%; padding: 6px;">Other Issues</label>
+                        </div>
+                        <div class="col-md-4" style="flex: 1;">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="report-additional-explanation" class="form-label" style="width: 100%; text-align: center; font-size: large;">Additional Explanation:</label>
+                        <textarea class="form-control" id="report-additional-explanation" rows="4"></textarea>
+                    </div>
+
+                    <button type="button submit" class="btn btn-outline-primary" style="margin-top: 20px; width: 250px; font-size: large; position: relative; left: 50%; transform: translateX(-50%); font-size: x-large;" id="submit-report-button">REPORT QUESTION</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="spinner-overlay"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.2); z-index: 1998; display: none;">
     </div>
@@ -611,6 +696,7 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
         + 100
     </div>
 
+    <script src="./scripts/indexJS/criteria_list.js"></script>
     <script src="./scripts/indexJS/clock.js"></script>
     <script src="./scripts/indexJS/optionQuestion.js"></script>
     <script src="./scripts/indexJS/specialEffects.js"></script>
@@ -622,6 +708,7 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
     <script src="./scripts/indexJS/ranks.js"></script>
     <script src="./scripts/indexJS/tutorials.js"></script>
     <script src="./scripts/indexJS/hint.js"></script>
+    <script src="./scripts/indexJS/report.js"></script>
 </body>
 
 </html>

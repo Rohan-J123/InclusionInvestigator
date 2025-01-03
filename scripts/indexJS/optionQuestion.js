@@ -60,6 +60,8 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
         pastScenarios: JSON.parse(sessionStorage.getItem('past-only-scenarios')),
         difficulty: questionDifficulty,
         correctOption: randomChoice,
+        wcag_criteria: wcag_criteria,
+        user_reports: JSON.parse(sessionStorage.getItem('user-reports')),
     };
     
 
@@ -126,6 +128,8 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
     const payload = {
         pastScenarios: JSON.parse(sessionStorage.getItem('past-only-scenarios')),
         difficulty: questionDifficulty,
+        wcag_criteria: wcag_criteria,
+        user_reports: JSON.parse(sessionStorage.getItem('user-reports')),
     };
     
 
