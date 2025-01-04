@@ -10,6 +10,10 @@ for(var i = 0; i < pastScenarios.length; i++){
     }
 }
 
+if(parseInt(sessionStorage.getItem('question-number')) >= 15){
+    document.getElementById('continue-button').innerText = "PLAY AGAIN"
+}
+
 document.getElementById('checkpoint-div').innerHTML = result;
 
 let seconds = parseInt(sessionStorage.getItem('timer').split(':')[2]);

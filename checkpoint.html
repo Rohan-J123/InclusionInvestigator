@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=" viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="icon" type="image/png" href="./Images/web-dev.png">
 
@@ -30,6 +30,31 @@
     <link rel="stylesheet" type="text/css" href="./src/confetti/csshake-slow.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./scripts/indexJS/cloud_connect.js"></script>
+
+    <style>
+        .survey-question{
+            margin: 10px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap;
+            min-height: 50px;
+        }
+
+        .slider-label{ 
+            font-weight: bold;
+            text-align: justify;
+        }
+
+        .sliderInput{
+            font-family: 'Courier New', Courier, monospace; 
+            font-weight: bold; 
+          width: 65px; 
+            text-align: center; 
+            height: 35px;
+        }
+    </style>
 
     <title>Inclusion Investigator Game</title>
 </head>
@@ -73,8 +98,110 @@
     </div>
     
     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-        <button type="button" class="btn btn-primary" style="font-size: x-large;" id="downloadPdf">DOWNLOAD QUESTION LIST</button>
-        <button type="button" class="btn btn-primary" style="font-size: x-large;" onclick="continueButton();">CONTINUE</button>
+        <button type="button" class="btn btn-primary" style="font-size: x-large; width: 200px;" id="survey-open-button" onclick="document.getElementById('surveyModalOpenButton').click();">SURVEY</button>
+        <button type="button" class="btn btn-primary" style="font-size: x-large; width: 350px;" id="downloadPdf">DOWNLOAD Q&A HISTORY</button>
+        <button type="button" class="btn btn-primary" style="font-size: x-large; width: 200px;" id="continue-button" onclick="continueButton();">CONTINUE</button>
+    </div>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#surveyModal"
+        id="surveyModalOpenButton" style="display: none;">Survey Modal Open Button
+    </button>
+
+    <div class="modal fade" id="surveyModal" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="surveyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-3 lobster-regular" id="surveyModalLabel"
+                        style="text-align: center; width: 100%;">SURVEY (Five is the highest)</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="survey-modal-close"></button>
+                </div>
+                <div class="modal-body" style="height: 500px; overflow-y: auto;">
+                    <label for="weightSlider1" class="slider-label">1. Did the game help you understand the importance of accessibility in websites?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider1" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question1Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel1" value="5"></input>
+                    </div>
+                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                    
+                    <label for="weightSlider2" class="slider-label">2. Were the accessibility violations presented in the game clear and easy to understand?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider2" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question2Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel2" value="5"></input>
+                    </div>
+                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                    <label for="weightSlider3" class="slider-label">3. How confident do you feel in identifying accessibility violations after playing the game?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider3" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question3Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel3" value="5"></input>
+                    </div>
+                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                    <label for="weightSlider4" class="slider-label">4. Were the AI-generated scenarios relevant and realistic?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider4" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question4Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel4" value="5"></input>
+                    </div>
+                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                    <label for="weightSlider5" class="slider-label">5. Did the scenarios cover a wide range of accessibility issues (e.g., visual, auditory, mobility)?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider5" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question5Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel5" value="5"></input>
+                    </div>
+                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                    <label for="weightSlider6" class="slider-label">6. How challenging were the scenarios presented in the game?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider6" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question6Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel6" value="5"></input>
+                    </div>
+                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                    <label for="weightSlider7" class="slider-label">7. How engaging was the game?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider7" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question7Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel7" value="5"></input>
+                    </div>
+                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                    <label for="weightSlider8" class="slider-label">8. Were the feedbacks provided after each scenario helpful for learning?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider8" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question8Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel8" value="5"></input>
+                    </div>
+                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                    <label for="weightSlider9" class="slider-label">9. Overall, how would you rate the game’s ability to teach accessibility principles?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider9" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question9Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel9" value="5"></input>
+                    </div>
+                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                    <label for="weightSlider10" class="slider-label">10. How likely are you to recommend this game to others interested in learning about accessibility?</label>
+                    <div class="survey-question">
+                        <input type="range" id="weightSlider10" style="accent-color: #0d6efd; width: 500px;"
+                            min="0" max="5" step="1" value="5">
+                        <input aria-label='Question10Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel10" value="5"></input>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: center; width: 100%;">
+                        <button type="button" class="btn btn-primary" onclick="onSurveySubmit()" style="width: 200px; font-size: x-large;">SUBMIT</button>
+                    </div>                     
+                </div>
+            </div>
+        </div>
     </div>
     
     <script src="./scripts/checkpointJS/checkpoint.js"></script>
@@ -85,16 +212,16 @@
 
             let pastScenarios = JSON.parse(sessionStorage.getItem('past-scenarios'));
 
-            let yPosition = 10;
+            let yPosition = 20;
             const pageHeight = pdf.internal.pageSize.height;
-            const margin = 10;
+            const margin = 20;
             const lineHeight = 10;
             const paragraphSpacing = 5;
 
             for (let i = 0; i < pastScenarios.length; i++) {
                 const lines = pdf.splitTextToSize((i + 1) + ") " + pastScenarios[i], 180); 
 
-                if (yPosition + lines.length * lineHeight > pageHeight - 2 * margin) {
+                if (yPosition + lines.length * lineHeight > pageHeight - 2 * margin && i != 0) {
                     pdf.addPage();
                     yPosition = margin;
                 }
@@ -106,5 +233,6 @@
 
         });
     </script>
+    <script src="./scripts/checkpointJS/survey.js"></script>
 </body>
 </html>
