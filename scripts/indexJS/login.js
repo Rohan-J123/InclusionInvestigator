@@ -59,6 +59,7 @@ document.getElementById("login-info").addEventListener("submit", async function(
         name: name,
         email: email,
         field: field,
+        consent: document.getElementById('anonymousDataConsent').checked,
         accessibilityKnowledge: accessibilityKnowledge,
         area: area,
         subfield: subfield,
