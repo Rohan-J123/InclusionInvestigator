@@ -70,7 +70,7 @@
                         }
                     }
 
-                    if (entryDate && entryDate > cutoffDate && Array.isArray(doc.score) && doc.score.length > 0) {
+                    if (entryDate && entryDate > cutoffDate && Array.isArray(doc.score) && doc.score.length > 0 && doc.consent == true) {
                         const playerScores = doc.score;
                         const playerFinalScore = playerScores.reduce((acc, curr) => acc + curr, 0);
                         let totalTimeTaken = totalTime(doc.timeTaken);

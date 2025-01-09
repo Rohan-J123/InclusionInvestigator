@@ -288,7 +288,8 @@ function onNextQuestion(correctlyAnswered){
                         id: userId,
                         score: updatedScore,
                         timeTaken: updatedTimeTaken,
-                        correctlyAnswered: updatedCorrectlyAnswered
+                        correctlyAnswered: updatedCorrectlyAnswered,
+                        userReports: JSON.parse(sessionStorage.getItem('user-reports'))
                     };
             
                     const response = await fetch(`${cloudURL}/addDocumentData?collectionName=${collectionName}`, {
