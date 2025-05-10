@@ -35,8 +35,10 @@ document.getElementById("login-info").addEventListener("submit", async function(
     const name = document.getElementById("login-name").value;
     const email = document.getElementById("login-email").value;
     const field = document.getElementById("login-field").value;
-    const accessibilityKnowledge = document.getElementById("login-accessibilty-knowledge").value;
     const area = document.getElementById("login-area").value;
+    const gamingExperience = document.getElementById("login-gaming-knowledge").value;
+    const accessibilityKnowledge = document.getElementById("login-accessibilty-knowledge").value;
+    const accessibilityEducation = document.getElementById("login-accessibility-education").value;
 
     const now = new Date();
     const utcOffset = now.getTimezoneOffset() * 60000;
@@ -59,10 +61,12 @@ document.getElementById("login-info").addEventListener("submit", async function(
         name: name,
         email: email,
         field: field,
-        consent: document.getElementById('anonymousDataConsent').checked,
-        accessibilityKnowledge: accessibilityKnowledge,
-        area: area,
         subfield: subfield,
+        consent: document.getElementById('anonymousDataConsent').checked,
+        area: area,
+        gamingExperience: gamingExperience,
+        accessibilityKnowledge: accessibilityKnowledge,
+        accessibilityEducation: accessibilityEducation,
         timestamp: String(istTime)
     };
     
