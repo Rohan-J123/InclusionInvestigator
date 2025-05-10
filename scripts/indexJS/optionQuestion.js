@@ -300,6 +300,7 @@ function onNextQuestion(correctlyAnswered){
                 var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
                 var updatedgeneratedScenarioList = docData.generatedScenarioList || [];
                 var updatedUserAnswer = docData.userAnswer || [];
+                var updatedUserReports = docData.userReports || [];
 
                 score = score - sumArray(updatedScore);
                 updatedScore.push(score);
@@ -307,6 +308,7 @@ function onNextQuestion(correctlyAnswered){
                 updatedCorrectlyAnswered.push(correctlyAnswered);
                 updatedgeneratedScenarioList.push(generatedScenario);
                 updatedUserAnswer.push(userAnswer);
+                updatedUserReports.push(userReport);
 
                 try {
                     const data = {
@@ -316,7 +318,7 @@ function onNextQuestion(correctlyAnswered){
                         correctlyAnswered: updatedCorrectlyAnswered,
                         generatedScenarioList: updatedgeneratedScenarioList,
                         userAnswer: updatedUserAnswer,
-                        userReports: JSON.parse(sessionStorage.getItem('user-reports'))
+                        userReports: updatedUserReports
                     };
             
                     const response = await fetch(`${cloudURL}/addDocumentData?collectionName=${collectionName}`, {

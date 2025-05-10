@@ -20,10 +20,18 @@ function checkSelection(checkbox) {
     }
 }
 
+var userReport = {};
 
 document.getElementById('submit-report-button').addEventListener('click', () => {
     var previousReports = JSON.parse(sessionStorage.getItem('user-reports')) || [];
     var userExplanation = document.getElementById('report-additional-explanation').value;
+
+    userReport = {
+        questionNumber: sessionStorage.getItem('question-number'),
+        questionScenario: `${inputScenario ? inputScenario : ''} ${optionScenario ? optionScenario : ''}`,
+        reportedOptionsSelected: reportedOptionsSelected,
+        userExplanation: userExplanation
+    }
 
     var newReport = `User Reported Scenario: ${inputScenario ? inputScenario : ''} ${optionScenario ? optionScenario : ''}; User Issues: ${reportedOptionsSelected}; User Explanation: ${userExplanation}; `;
 
