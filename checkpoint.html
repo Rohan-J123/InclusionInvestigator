@@ -113,92 +113,303 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-3 lobster-regular" id="surveyModalLabel"
-                        style="text-align: center; width: 100%;">SURVEY (Five is the highest)</h1>
+                        style="text-align: center; width: 100%;">GAME SURVEY</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="survey-modal-close"></button>
                 </div>
+                <div style="display: flex; justify-content: center; margin: 20px;">
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="surveyRadio" id="surveyRadio1" autocomplete="off" checked onclick="document.getElementById('survey_button_1').click()">
+                        <label class="btn btn-outline-primary" for="surveyRadio1">Section A</label>
+
+                        <input type="radio" class="btn-check" name="surveyRadio" id="surveyRadio2" autocomplete="off" onclick="document.getElementById('survey_button_2').click()">
+                        <label class="btn btn-outline-primary" for="surveyRadio2">Section B</label>
+
+                        <input type="radio" class="btn-check" name="surveyRadio" id="surveyRadio3" autocomplete="off" onclick="document.getElementById('survey_button_3').click()">
+                        <label class="btn btn-outline-primary" for="surveyRadio3">Section C</label>
+
+                        <input type="radio" class="btn-check" name="surveyRadio" id="surveyRadio4" autocomplete="off" onclick="document.getElementById('survey_button_4').click()">
+                        <label class="btn btn-outline-primary" for="surveyRadio4">Section D</label>
+                    </div>
+                </div>
                 <div class="modal-body" style="height: 500px; overflow-y: auto;">
-                    <label for="weightSlider1" class="slider-label">1. Did the game help you understand the importance of accessibility in websites?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider1" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question1Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel1" value="5"></input>
-                    </div>
-                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
-                    
-                    <label for="weightSlider2" class="slider-label">2. Were the accessibility violations presented in the game clear and easy to understand?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider2" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question2Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel2" value="5"></input>
-                    </div>
-                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                    <div id="surveyCarousel" class="carousel slide">
+                        <div class="carousel-indicators" style="display: none;">
+                            <button id="survey_button_1" type="button" data-bs-target="#surveyCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" onclick="document.querySelector('.modal-body').scrollTop = 0;"></button>
+                            <button id="survey_button_2" type="button" data-bs-target="#surveyCarousel" data-bs-slide-to="1" aria-label="Slide 2" onclick="document.querySelector('.modal-body').scrollTop = 0;"></button>
+                            <button id="survey_button_3" type="button" data-bs-target="#surveyCarousel" data-bs-slide-to="2" aria-label="Slide 3" onclick="document.querySelector('.modal-body').scrollTop = 0;"></button>
+                            <button id="survey_button_4" type="button" data-bs-target="#surveyCarousel" data-bs-slide-to="3" aria-label="Slide 4" onclick="document.querySelector('.modal-body').scrollTop = 0;"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" id="surveySlide1">
+                                <h3 class="lobster-regular" style="text-align: center; width: 100%;">Section A: Intrinsic Motivation Inventory (IMI)</h3>
+                                <div style="margin-bottom: 25px; text-align: center; width: 100%; font-size: large;"><i>Scale: 1 = Not at all true → 7 = Very true</i></div>
 
-                    <label for="weightSlider3" class="slider-label">3. How confident do you feel in identifying accessibility violations after playing the game?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider3" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question3Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel3" value="5"></input>
-                    </div>
-                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                <label for="weightSlider1" class="slider-label">1. I enjoyed playing the accessibility game. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider1" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question1Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel1" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                
+                                <label for="weightSlider2" class="slider-label">2. The gameplay was interesting and engaging. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider2" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question2Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel2" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
 
-                    <label for="weightSlider4" class="slider-label">4. Were the AI-generated scenarios relevant and realistic?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider4" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question4Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel4" value="5"></input>
-                    </div>
-                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                <label for="weightSlider3" class="slider-label">3. This was a fun way to test my accessibility knowledge. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider3" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question3Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel3" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
 
-                    <label for="weightSlider5" class="slider-label">5. Did the scenarios cover a wide range of accessibility issues (e.g., visual, auditory, mobility)?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider5" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question5Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel5" value="5"></input>
-                    </div>
-                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                <label for="weightSlider4" class="slider-label">4. I think I performed well on the accessibility challenges. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider4" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question4Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel4" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
 
-                    <label for="weightSlider6" class="slider-label">6. How challenging were the scenarios presented in the game?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider6" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question6Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel6" value="5"></input>
-                    </div>
-                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                <label for="weightSlider5" class="slider-label">5. I felt confident in answering the questions. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider5" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question5Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel5" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
 
-                    <label for="weightSlider7" class="slider-label">7. How engaging was the game?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider7" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question7Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel7" value="5"></input>
-                    </div>
-                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                <label for="weightSlider6" class="slider-label">6. I understood the accessibility concepts involved in the game. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider6" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question6Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel6" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
 
-                    <label for="weightSlider8" class="slider-label">8. Were the feedbacks provided after each scenario helpful for learning?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider8" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question8Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel8" value="5"></input>
-                    </div>
-                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                <label for="weightSlider7" class="slider-label">7. I found this game helpful in reinforcing WCAG concepts. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider7" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question7Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel7" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
 
-                    <label for="weightSlider9" class="slider-label">9. Overall, how would you rate the game’s ability to teach accessibility principles?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider9" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question9Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel9" value="5"></input>
-                    </div>
-                    <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                <label for="weightSlider8" class="slider-label">8. The game showed me why accessibility matters in real-world development. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider8" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question8Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel8" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
 
-                    <label for="weightSlider10" class="slider-label">10. How likely are you to recommend this game to others interested in learning about accessibility?</label>
-                    <div class="survey-question">
-                        <input type="range" id="weightSlider10" style="accent-color: #0d6efd; width: 500px;"
-                            min="0" max="5" step="1" value="5">
-                        <input aria-label='Question10Input' class="form-control sliderInput" type="number" step="1" min="0" max="5" id="weightLabel10" value="5"></input>
+                                <label for="weightSlider9" class="slider-label">9. I would recommend this game to others learning about accessibility. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider9" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question9Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel9" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider10" class="slider-label">10. I put a lot of effort into doing well in the game. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider10" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question10Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel10" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider11" class="slider-label">11. I tried hard to succeed in the challenges. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider11" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question11Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel11" value="7"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider12" class="slider-label">12. Performing well in the game was important to me. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider12" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="7" step="1" value="7">
+                                    <input aria-label='Question12Input' class="form-control sliderInput" type="number" step="1" min="1" max="7" id="weightLabel12" value="7"></input>
+                                </div>
+                                <br>
+                                <div style="display: flex; justify-content: center; width: 100%;">
+                                    <button type="button" class="btn btn-primary" onclick="document.getElementById('surveyRadio2').click()" style="width: 200px; font-size: x-large;">NEXT</button>
+                                </div>
+                            </div>
+                            <div class="carousel-item" id="surveySlide2">
+                                <h3 class="lobster-regular" style="text-align: center; width: 100%;">Section B: System Usability Scale (SUS)</h3>
+                                <div style="margin-bottom: 25px; text-align: center; width: 100%; font-size: large;"><i>Scale: 1 = Strongly disagree → 5 = Strongly agree</i></div>
+
+                                <label for="weightSlider13" class="slider-label">1. I think I would like to use this game frequently. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider13" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question13Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel13" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                
+                                <label for="weightSlider14" class="slider-label">2. I found the game unnecessarily complex. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider14" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question14Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel14" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider15" class="slider-label">3. I thought the game was easy to use. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider15" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question15Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel15" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider16" class="slider-label">4. I think I would need technical support to use this game. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider16" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question16Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel16" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider17" class="slider-label">5. I found the various features well integrated. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider17" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question17Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel17" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider18" class="slider-label">6. I found too many inconsistencies in the game. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider18" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question18Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel18" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider19" class="slider-label">7. I imagine most people would learn to use this game quickly. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider19" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question19Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel19" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider20" class="slider-label">8. I found the game very cumbersome to use. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider20" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question20Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel20" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider21" class="slider-label">9. I felt very confident using the game. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider21" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question21Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel21" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider22" class="slider-label">10. I needed to learn a lot before I could play the game. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider22" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question22Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel22" value="5"></input>
+                                </div>
+                                <br>
+                                <div style="display: flex; justify-content: center; width: 100%;">
+                                    <button type="button" class="btn btn-primary" onclick="document.getElementById('surveyRadio3').click()" style="width: 200px; font-size: x-large;">NEXT</button>
+                                </div>
+                            </div>
+                            <div class="carousel-item" id="surveySlide3">
+                                <h3 class="lobster-regular" style="text-align: center; width: 100%;">Section C: Perceptions of Fairness, Clarity, and Difficulty</h3>
+                                <div style="margin-bottom: 25px; text-align: center; width: 100%; font-size: large;"><i>Scale: 1 = Strongly disagree → 5 = Strongly agree</i></div>
+
+                                <label for="weightSlider23" class="slider-label">1. The questions in the game were fair and unbiased. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider23" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question23Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel23" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                
+                                <label for="weightSlider24" class="slider-label">2. The correct answers were clearly explainable. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider24" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question24Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel24" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider25" class="slider-label">3. The difficulty level was appropriate for my skill level. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider25" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question25Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel25" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider26" class="slider-label">4. The feedback after each question helped me learn. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider26" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question26Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel26" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider27" class="slider-label">5. The use of AI to generate questions and feedback felt accurate and trustworthy. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider27" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question27Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel27" value="5"></input>
+                                </div>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="weightSlider28" class="slider-label">6. The leaderboard, hints, and scoring helped keep me engaged. <span style="color: red; font-size: large;">*</span></label>
+                                <div class="survey-question">
+                                    <input type="range" id="weightSlider28" style="accent-color: #0d6efd; width: 750px;"
+                                        min="1" max="5" step="1" value="5">
+                                    <input aria-label='Question28Input' class="form-control sliderInput" type="number" step="1" min="1" max="5" id="weightLabel28" value="5"></input>
+                                </div>
+                                <br>
+                                <div style="display: flex; justify-content: center; width: 100%;">
+                                    <button type="button" class="btn btn-primary" onclick="document.getElementById('surveyRadio4').click()" style="width: 200px; font-size: x-large;">NEXT</button>
+                                </div>
+                            </div>
+                            <div class="carousel-item" id="surveySlide4">
+                                <h3 class="lobster-regular" style="text-align: center; width: 100%; margin-bottom: 25px;">Section D: Open-Ended Questions</h3>
+
+                                <label for="Question29Input" class="form-label">1. What aspects of the game worked well for you?</label>
+                                <textarea class="form-control" id="Question29Input" rows="3" style="margin: 20px; width: 95%;"></textarea>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+                                
+                                <label for="Question30Input" class="form-label">2. Were there any parts of the game that felt confusing or frustrating?</label>
+                                <textarea class="form-control" id="Question30Input" rows="3" style="margin: 20px; width: 95%;"></textarea>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="Question31Input" class="form-label">3. How did the game change your understanding or awareness of accessibility?</label>
+                                <textarea class="form-control" id="Question31Input" rows="3" style="margin: 20px; width: 95%;"></textarea>
+                                <div style="background-color: rgb(230, 230, 230); width: 95%; height: 1px; margin: 10px;"></div>
+
+                                <label for="Question32Input" class="form-label">4. Do you have suggestions to improve the game's content, design, or feedback?</label>
+                                <textarea class="form-control" id="Question32Input" rows="3" style="margin: 20px; width: 95%;"></textarea>
+                                <br>
+                                <div style="display: flex; justify-content: center; width: 100%;">
+                                    <button type="button" class="btn btn-primary" onclick="onSurveySubmit()" style="width: 200px; font-size: x-large;">SUBMIT</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <br>
-                    <div style="display: flex; justify-content: center; width: 100%;">
-                        <button type="button" class="btn btn-primary" onclick="onSurveySubmit()" style="width: 200px; font-size: x-large;">SUBMIT</button>
-                    </div>                     
+                                         
                 </div>
             </div>
         </div>

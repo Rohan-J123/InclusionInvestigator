@@ -2,7 +2,12 @@ if(sessionStorage.getItem('survey') == 'true'){
     document.getElementById('survey-open-button').disabled = true;
 }
 
-for (let i = 1; i <= 10; i++) {
+if(parseInt(sessionStorage.getItem('question-number')) >= 15){
+    document.getElementById('survey-open-button').click();
+    document.getElementById('survey-modal-close').style.display = 'none';
+}
+
+for (let i = 1; i <= 28; i++) {
     document.getElementById('weightSlider' + String(i)).addEventListener('input', function(e) {
         var weightValue = parseInt(e.target.value);
         document.getElementById('weightLabel' + String(i)).value = weightValue;
@@ -12,7 +17,24 @@ for (let i = 1; i <= 10; i++) {
         var weightValue = parseInt(e.target.value);
         document.getElementById('weightSlider' + String(i)).value = weightValue;
     });
+}
 
+for (let i = 1; i <= 12; i++) {
+    document.getElementById('weightLabel' + String(i)).addEventListener('blur', function(e) {
+        var weightValue = parseInt(e.target.value);
+        if (!isNaN(weightValue)) {
+            e.target.value = weightValue;
+            if (weightValue < 0) {
+                e.target.value = '0';
+            }
+            else if (weightValue > 7) {
+                e.target.value = '7';
+            }
+        }
+    });
+}
+
+for (let i = 13; i <= 28; i++) {
     document.getElementById('weightLabel' + String(i)).addEventListener('blur', function(e) {
         var weightValue = parseInt(e.target.value);
         if (!isNaN(weightValue)) {
@@ -28,18 +50,23 @@ for (let i = 1; i <= 10; i++) {
 }
 
 async function onSurveySubmit() {
-    var surveyResponses = [];
-
-    for (let i = 1; i <= 10; i++) {
+    var surveyIntegerResponses = [];
+    for (let i = 1; i <= 28; i++) {
         let weightInput = document.getElementById('weightLabel' + String(i));
         if (weightInput) {
             let weightValue = parseInt(weightInput.value);
             if (!isNaN(weightValue)) {
-                surveyResponses.push(weightValue);
+                surveyIntegerResponses.push(weightValue);
             } else {
-                surveyResponses.push(null);
+                surveyIntegerResponses.push(null);
             }
         }
+    }
+
+    var surveyTextResponses = [];
+    for (let i = 29; i <= 32; i++) {
+        let textInput = document.getElementById('Question' + String(i) + 'Input').value;
+        surveyTextResponses.push(textInput);
     }
 
     var userId = sessionStorage.getItem('user-id');
@@ -51,7 +78,8 @@ async function onSurveySubmit() {
 
     const documentData = {
         id: userId,
-        surveyResponses: surveyResponses
+        surveyIntegerResponses: surveyIntegerResponses,
+        surveyTextResponses: surveyTextResponses
     };
 
     try {

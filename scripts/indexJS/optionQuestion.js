@@ -27,16 +27,19 @@ var optionAtext;
 var optionBtext;
 var optionCtext;
 
-var optioncorrectAnswer;
+var optionCorrectAnswer;
 var optionExplanation;
 
 var correctAnswer;
 
 var inputScenario;
 var inputQuestion;
-var inputcorrectAnswer;
+var inputCorrectAnswer;
 var inputExplanation;
 var inputHint;
+
+var userAnswer;
+var generatedScenario;
 
 if(parseInt(sessionStorage.getItem('question-number')) <= 10){
     document.getElementById('spinner-circle').style.display = "block";
@@ -89,7 +92,6 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
         })
         .then((data) => {
             fetchedData = data.scenario;
-            // console.log(fetchedData);
             
             optionScenario = getSubstringBetween(fetchedData, "Scenario: ", "Question").replace(/\n/g, " ");
             optionQuestion = getSubstringBetween(fetchedData, "Question: ", "A)").replace(/\n/g, " ");
@@ -98,8 +100,18 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
             optionBtext = getSubstringBetween(fetchedData, "B) ", "C)").replace(/\n/g, " ");
             optionCtext = getSubstringBetween(fetchedData, "C) ", "Correct Answer").replace(/\n/g, " ");
 
-            optioncorrectAnswer = getSubstringBetween(fetchedData, "Correct Answer: ", "Explanation").replace(/\n/g, " ");
+            optionCorrectAnswer = getSubstringBetween(fetchedData, "Correct Answer: ", "Explanation").replace(/\n/g, " ");
             optionExplanation = getSubstringFromWord(fetchedData, "Explanation: ").replace(/\n/g, " ");
+
+            generatedScenario = {
+                optionScenario: optionScenario,
+                optionQuestion: optionQuestion,
+                optionAtext: optionAtext,
+                optionBtext: optionBtext,
+                optionCtext: optionCtext,
+                optionCorrectAnswer: optionCorrectAnswer,
+                optionExplanation: optionExplanation
+            }
 
             document.getElementById('code').innerText = "Scenario: " + optionScenario + "\n\n" + "Question: " + optionQuestion;
 
@@ -112,7 +124,7 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
             document.getElementById('spinner-circle').style.display = "none";
             document.getElementById('spinner-overlay').style.display = "none";
 
-            correctAnswer = optioncorrectAnswer.slice(0, 1);
+            correctAnswer = optionCorrectAnswer.slice(0, 1);
 
             stop = false;
         })
@@ -166,14 +178,21 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
         })
         .then((data) => {
             fetchedData = data.scenario.replace(/\n/g, " ");
-            // console.log(fetchedData);
 
             inputScenario = getSubstringBetween(fetchedData, "Scenario: ", "Question").replace(/\n/g, " ");
             inputQuestion = getSubstringBetween(fetchedData, "Question: ", "Correct Answer").replace(/\n/g, " ");
 
-            inputcorrectAnswer = getSubstringBetween(fetchedData, "Correct Answer: ", "Explanation").replace(/\n/g, " ");
+            inputCorrectAnswer = getSubstringBetween(fetchedData, "Correct Answer: ", "Explanation").replace(/\n/g, " ");
             inputExplanation = getSubstringBetween(fetchedData, "Explanation: ", "Hint").replace(/\n/g, " "); 
             inputHint = getSubstringFromWord(fetchedData, "Hint: ").replace(/\n/g, " ");
+
+            generatedScenario = {
+                inputScenario: inputScenario,
+                inputQuestion: inputQuestion,
+                inputExpectedAnswer: inputCorrectAnswer,
+                inputExplanation: inputExplanation,
+                inputHint: inputHint
+            }
 
             document.getElementById('code').innerText = "Scenario: " + inputScenario + "\n\n" + "Question: " + inputQuestion;
 
@@ -246,6 +265,8 @@ function onOptionChosen(optionLetter){
     sessionStorage.setItem('past-only-scenarios', JSON.stringify(pastOnlyScenarios));
 
     document.getElementById('goToPart1Result').click();
+
+    userAnswer = optionLetter;
 }
 
 function onNextQuestion(correctlyAnswered){
@@ -277,11 +298,15 @@ function onNextQuestion(correctlyAnswered){
                 var updatedScore = docData.score || [];
                 var updatedTimeTaken = docData.timeTaken || [];
                 var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
+                var updatedgeneratedScenarioList = docData.generatedScenarioList || [];
+                var updatedUserAnswer = docData.userAnswer || [];
 
                 score = score - sumArray(updatedScore);
                 updatedScore.push(score);
                 updatedTimeTaken.push(timeTaken);
                 updatedCorrectlyAnswered.push(correctlyAnswered);
+                updatedgeneratedScenarioList.push(generatedScenario);
+                updatedUserAnswer.push(userAnswer);
 
                 try {
                     const data = {
@@ -289,6 +314,8 @@ function onNextQuestion(correctlyAnswered){
                         score: updatedScore,
                         timeTaken: updatedTimeTaken,
                         correctlyAnswered: updatedCorrectlyAnswered,
+                        generatedScenarioList: updatedgeneratedScenarioList,
+                        userAnswer: updatedUserAnswer,
                         userReports: JSON.parse(sessionStorage.getItem('user-reports'))
                     };
             
@@ -328,7 +355,7 @@ function onNextQuestion(correctlyAnswered){
 document.getElementById("input-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    var userAnswer = document.getElementById('input-form-user-answer').value.trim();
+    userAnswer = document.getElementById('input-form-user-answer').value.trim();
 
     if(userAnswer == ""){
         userAnswer = "No Answer";
