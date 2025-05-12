@@ -310,6 +310,11 @@ function onNextQuestion(correctlyAnswered){
                 updatedUserAnswer.push(userAnswer);
                 updatedUserReports.push(userReport);
 
+                var totalScore = parseInt(sessionStorage.getItem('score'));
+
+                var [timeHours, timeMinutes, timeSeconds] = document.getElementById('clock').textContent.split(':').map(Number);
+                var totalTimeInSeconds = timeHours * 3600 + timeMinutes * 60 + timeSeconds;
+
                 try {
                     const data = {
                         id: userId,
@@ -318,7 +323,9 @@ function onNextQuestion(correctlyAnswered){
                         correctlyAnswered: updatedCorrectlyAnswered,
                         generatedScenarioList: updatedgeneratedScenarioList,
                         userAnswer: updatedUserAnswer,
-                        userReports: updatedUserReports
+                        userReports: updatedUserReports,
+                        totalScore: totalScore,
+                        totalTimeInSeconds: totalTimeInSeconds
                     };
             
                     const response = await fetch(`${cloudURL}/addDocumentData?collectionName=${collectionName}`, {

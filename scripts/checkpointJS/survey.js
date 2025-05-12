@@ -50,23 +50,25 @@ for (let i = 13; i <= 28; i++) {
 }
 
 async function onSurveySubmit() {
-    var surveyIntegerResponses = [];
+    document.getElementById('spinner-circle').style.display = "block";
+    document.getElementById('spinner-overlay').style.display = "block";
+
+    var surveyResponses = [];
     for (let i = 1; i <= 28; i++) {
         let weightInput = document.getElementById('weightLabel' + String(i));
         if (weightInput) {
             let weightValue = parseInt(weightInput.value);
             if (!isNaN(weightValue)) {
-                surveyIntegerResponses.push(weightValue);
+                surveyResponses.push(weightValue);
             } else {
-                surveyIntegerResponses.push(null);
+                surveyResponses.push(null);
             }
         }
     }
 
-    var surveyTextResponses = [];
     for (let i = 29; i <= 32; i++) {
         let textInput = document.getElementById('Question' + String(i) + 'Input').value;
-        surveyTextResponses.push(textInput);
+        surveyResponses.push(textInput);
     }
 
     var userId = sessionStorage.getItem('user-id');
@@ -78,8 +80,7 @@ async function onSurveySubmit() {
 
     const documentData = {
         id: userId,
-        surveyIntegerResponses: surveyIntegerResponses,
-        surveyTextResponses: surveyTextResponses
+        surveyResponses: surveyResponses
     };
 
     try {
@@ -99,6 +100,9 @@ async function onSurveySubmit() {
         sessionStorage.setItem('survey', 'true');
         document.getElementById('survey-modal-close').click();
         console.log('Survey submitted successfully.');
+
+        document.getElementById('spinner-circle').style.display = "none";
+        document.getElementById('spinner-overlay').style.display = "none";
     } catch (error) {
         console.error('Error submitting survey:', error);
     }
