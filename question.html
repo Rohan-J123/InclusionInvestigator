@@ -136,9 +136,9 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
                             <form id="input-form" style="text-align: center; margin: 0px 10px">
                                 <div class="mb-3">
                                     <label class="lobster-regular"
-                                        style="text-align: center; width: 100%; font-size: xx-large; margin-bottom: 10px;"
+                                        style="text-align: center; width: 100%; font-size: 22.55px; margin: 10px;"
                                         for="input-form-user-answer" class="form-label">
-                                        Enter Possible Solution
+                                        Enter Possible Solution (Explain elaborately - Use text, code snippets or a combination of both)
                                     </label>
                                     <textarea class="form-control" id="input-form-user-answer" rows="4"
                                         style="font-size: large; margin-bottom: 20px;"></textarea>
@@ -201,7 +201,7 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
                             <hr class="dropdown-divider">
                         </li>
                         <li><a class="dropdown-item" href="./index.html" style="padding-left: 0%;">Restart</a></li>
-                        <li><a class="dropdown-item" href="https://swaroopjoshi.in/project/sugamyata/" target="_blank"
+                        <li><a class="dropdown-item" href="http://learndigitalaccessibility.com/" target="_blank"
                                 style="padding-left: 0%;">About Us</a></li>
                     </ul>
                 </div>
@@ -448,11 +448,22 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <form id="login-info" style="padding: 20px;">
-                                    <div class="mb-3">
-                                        <label for="login-name" class="form-label">Your Name: <span
-                                                style="color: rgb(225, 1, 1);">*</span></label>
-                                        <input type="text" class="form-control" id="login-name" name="login-name"
-                                            required>
+                                    <div style="display: flex;">
+                                        <div class="mb-3" style="flex: 1; margin-right: 10px;">
+                                            <label for="login-name" class="form-label">Your Name: <span
+                                                    style="color: rgb(225, 1, 1);">*</span></label>
+                                            <input type="text" class="form-control" id="login-name" name="login-name"
+                                                required>
+                                        </div>
+                                        <div class="mb-3" style="flex: 1; margin-left: 10px;">
+                                            <label for="login-gender" class="form-label" id="login-gender-label">Gender: <span style="color: rgb(225, 0, 0);">*</span></label>
+                                            <select class="form-control" id="login-gender" name="login-gender" required>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Prefers Non-disclosure">Prefer not to disclose</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="login-email" class="form-label">Email Address: <span
@@ -537,10 +548,14 @@ The goal is to achieve the highest score out of hundred in the shortest amount o
                                         <div class="mb-3"
                                             style="flex: 1; margin-left: 10px; margin-top: 0%; padding: 0%;">
                                             <select class="form-control" id="login-area" name="login-area" required>
-                                                <option value="Africa">Africa</option>
-                                                <option value="America">America</option>
-                                                <option value="Asia">Asia</option>
-                                                <option value="Europe">Europe</option>
+                                                <option value="North America">North America (US, Canada, Mexico)</option>
+                                                <option value="South America">South America (Brazil, Argentina, Colombia, Chile, Other SA countries)</option>
+                                                <option value="Europe">Europe (UK, Germany, France, Italy, Spain, Other EU countries)</option>
+                                                <option value="Asia">Asia (China, India, Japan, South Korea, Southeast Asia, Other Asian countries)</option>
+                                                <option value="Middle East">Middle East (UAE, Saudi Arabia, Israel, Other Middle Eastern countries)</option>
+                                                <option value="Africa">Africa (South Africa, Nigeria, Kenya, Egypt, Other African countries)</option>
+                                                <option value="Oceania">Oceania (Australia, New Zealand, Other Oceanian countries)</option>
+                                                <option value="Other">Other</option>
                                             </select>
                                         </div>
                                     </div>

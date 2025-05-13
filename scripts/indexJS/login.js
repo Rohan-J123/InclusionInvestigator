@@ -33,6 +33,7 @@ document.getElementById("login-info").addEventListener("submit", async function(
     document.getElementById('spinner-overlay').style.display = "block";
 
     const name = document.getElementById("login-name").value;
+    const gender = document.getElementById("login-gender").value;
     const email = document.getElementById("login-email").value;
     const field = document.getElementById("login-field").value;
     const area = document.getElementById("login-area").value;
@@ -59,6 +60,7 @@ document.getElementById("login-info").addEventListener("submit", async function(
     const documentData = {
         id: userId,
         name: name,
+        gender: gender,
         email: email,
         field: field,
         subfield: subfield,

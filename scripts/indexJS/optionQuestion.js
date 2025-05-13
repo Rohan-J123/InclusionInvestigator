@@ -59,14 +59,11 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
 
     // console.log("Correct Option: " + randomChoice);
 
-    let start = Math.floor(Math.random() * wcag_criteria_list.length);
-    let end = Math.floor(Math.random() * wcag_criteria_list.length);
-
-    if (start > end) {
-        [start, end] = [end, start];
-    }
-
-    var wcag_criteria = wcag_criteria_list.splice(start, end - start);
+    var wcag_criteria = wcag_criteria_list
+                            .map(x => [Math.random(), x])
+                            .sort((a, b) => a[0] - b[0])
+                            .slice(0, Math.floor(Math.random() * wcag_criteria_list.length) + 1)
+                            .map(x => x[1]);
 
     const payload = {
         pastScenarios: JSON.parse(sessionStorage.getItem('past-only-scenarios')),
@@ -141,15 +138,13 @@ if(parseInt(sessionStorage.getItem('question-number')) <= 10){
     stop = true;
 
     var questionDifficulty = (JSON.parse(sessionStorage.getItem('correct-input-questions')).length + 1) * 2;
-    
-    let start = Math.floor(Math.random() * wcag_criteria_list.length);
-    let end = Math.floor(Math.random() * wcag_criteria_list.length);
 
-    if (start > end) {
-        [start, end] = [end, start];
-    }
+    var wcag_criteria = wcag_criteria_list
+                            .map(x => [Math.random(), x])
+                            .sort((a, b) => a[0] - b[0])
+                            .slice(0, Math.floor(Math.random() * wcag_criteria_list.length) + 1)
+                            .map(x => x[1]);
 
-    var wcag_criteria = wcag_criteria_list.splice(start, end - start);
 
     if(questionDifficulty > 5){
         questionDifficulty = 5;
